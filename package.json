@@ -19,6 +19,7 @@
     "clsx": "^2.1.1",
     "country-list": "^2.4.1",
     "country-list-with-dial-code-and-flag": "^5.1.1",
+    "googleapis": "^167.0.0",
     "lucide-react": "^0.555.0",
     "motion": "^12.23.25",
     "next": "16.0.5",
