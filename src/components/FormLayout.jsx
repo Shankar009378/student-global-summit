@@ -17,6 +17,7 @@ export default function FormLayout() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadedFileName, setUploadedFileName] = useState("");
+  const [eventType, setEventType] = useState("");
 
   // Handle input change
   const updateField = (name, value) => {
@@ -431,6 +432,111 @@ export default function FormLayout() {
               </div>
             </div>
           </div>
+
+          {/* EVENT SELECTION */}
+          <div className="border-b border-white pb-12">
+            <h2 className="text-yellow-300 font-semibold">
+              Choose Participation Event *
+            </h2>
+            <p className="text-pink-600 text-sm mt-1">
+              Select the event you wish to participate in.
+            </p>
+
+            <div className="mt-6 space-y-4">
+              <label className="flex items-center gap-3 text-white">
+                <input
+                  type="radio"
+                  name="eventType"
+                  value="startup"
+                  onChange={() => setEventType("startup")}
+                  className="w-4 h-4"
+                />
+                <span className="text-sm font-medium">
+                  Yuva Swadeshi Navachar Pardarshini (Startup & Tech Exhibition)
+                </span>
+              </label>
+
+              <label className="flex items-center gap-3 text-white">
+                <input
+                  type="radio"
+                  name="eventType"
+                  value="policy"
+                  onChange={() => setEventType("policy")}
+                  className="w-4 h-4"
+                />
+                <span className="text-sm font-medium">
+                  Voices of Future – The Global Policy Nexus (Policy Debate)
+                </span>
+              </label>
+            </div>
+          </div>
+
+          {/* STALL INFORMATION — Only for Startup Exhibition */}
+          {eventType === "startup" && (
+            <div className="border-b border-white pb-12">
+              <h2 className="text-yellow-300 font-semibold">
+                Stall Information
+              </h2>
+              <p className="text-pink-600 text-sm mt-1">
+                Provide details about your startup/product for stall allocation.
+              </p>
+
+              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div className="sm:col-span-3">
+                  <label className="text-white text-sm">
+                    Startup / Project Name *
+                  </label>
+                  <input
+                    className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
+                    onChange={(e) => updateField("stall-name", e.target.value)}
+                  />
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label className="text-white text-sm">
+                    Stage of Development *
+                  </label>
+                  <select
+                    className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
+                    onChange={(e) =>
+                      updateField("development-stage", e.target.value)
+                    }
+                  >
+                    <option>Prototype</option>
+                    <option>MVP</option>
+                    <option>Beta Product</option>
+                    <option>Market Ready</option>
+                    <option>Early Startup</option>
+                  </select>
+                </div>
+
+                <div className="col-span-full">
+                  <label className="text-white text-sm">
+                    Stall Requirements *
+                  </label>
+                  <textarea
+                    rows={4}
+                    className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-2 resize-none"
+                    onChange={(e) =>
+                      updateField("stall-requirements", e.target.value)
+                    }
+                  ></textarea>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label className="text-white text-sm">
+                    Team Members Present *
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
+                    onChange={(e) => updateField("stall-team", e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* PROJECT OVERVIEW */}
           <div className="border-b border-white pb-12">

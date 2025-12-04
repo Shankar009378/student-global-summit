@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import LogoClouds from "@/components/LogoClouds";
 import NewsletterSection from "@/components/NewsletterSection";
 import Perks from "@/components/Perks";
+import RewardsSection from "@/components/RewardsSection";
 import SpeakersSection from "@/components/SpeakersSection";
 import Image from "next/image";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <HeaderSection />
       <SpeakersSection />
       <Perks />
+      <RewardsSection />
       <Faq />
       <NewsletterSection />
       <Footer />
