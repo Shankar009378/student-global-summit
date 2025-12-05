@@ -1,9 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import * as XLSX from "xlsx";
-import { PhotoIcon } from "@heroicons/react/24/solid";
-import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import CountryList from "country-list-with-dial-code-and-flag";
 import { getNames } from "country-list";
 
@@ -24,8 +21,13 @@ export default function FormLayout() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!eventType) {
+      alert("Please select an event before submitting.");
+      return;
+    }
+
     // Validate Required Fields
-    const requiredFields = [
+    const baseRequired = [
       "first-name",
       "last-name",
       "email",
@@ -33,22 +35,27 @@ export default function FormLayout() {
       "phone",
       "country",
       "age",
-      "gender",
       "street-address",
       "city",
       "region",
       "postal-code",
-      "highest-qualification",
       "field-of-study",
       "institution-name",
       "year-of-passing",
-      "academic-status",
+    ];
+
+    const startupRequired = [
       "project-title",
-      "project-category",
       "project-short",
       "project-detail",
       "role",
+      "project-drive-link",
     ];
+
+    const requiredFields =
+      eventType === "startup"
+        ? [...baseRequired, ...startupRequired]
+        : baseRequired;
 
     for (const field of requiredFields) {
       if (!formData[field] || formData[field].trim() === "") {
@@ -72,21 +79,22 @@ export default function FormLayout() {
       eventType,
     };
 
+    const fd = new FormData();
+    fd.append("data", JSON.stringify(payload));
+
     const res = await fetch("/api/register", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      body: fd,
     });
 
     const data = await res.json();
 
     if (data.success) {
+      alert("You have successfully submitted the form!");
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 3000);
 
       setFormData({});
-      setFile(null);
-      setUploadedFileName("");
       e.target.reset();
     } else {
       alert("Something went wrong while submitting.");
@@ -476,108 +484,115 @@ export default function FormLayout() {
           )}
 
           {/* PROJECT OVERVIEW */}
+          {eventType === "startup" && (
+            <div className="border-b border-white pb-12">
+              <h2 className="text-yellow-300 font-semibold">
+                Project Overview
+              </h2>
 
-          <div className="border-b border-white pb-12">
-            <h2 className="text-yellow-300 font-semibold">Project Overview</h2>
+              <p className="text-pink-600 text-sm">
+                Share details about your project.
+              </p>
 
-            <p className="text-pink-600 text-sm">
-              Share details about your project.
-            </p>
+              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div className="sm:col-span-3">
+                  <label className="text-white text-sm">Project Title *</label>
 
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-3">
-                <label className="text-white text-sm">Project Title *</label>
+                  <input
+                    className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
+                    onChange={(e) =>
+                      updateField("project-title", e.target.value)
+                    }
+                  />
+                </div>
 
-                <input
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
-                  onChange={(e) => updateField("project-title", e.target.value)}
-                />
-              </div>
+                <div className="sm:col-span-3">
+                  <label className="text-white text-sm">Category *</label>
 
-              <div className="sm:col-span-3">
-                <label className="text-white text-sm">Category *</label>
+                  <select
+                    className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
+                    onChange={(e) =>
+                      updateField("project-category", e.target.value)
+                    }
+                  >
+                    <option>AI / Machine Learning</option>
 
-                <select
-                  className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
-                  onChange={(e) =>
-                    updateField("project-category", e.target.value)
-                  }
-                >
-                  <option>AI / Machine Learning</option>
+                    <option>Robotics</option>
 
-                  <option>Robotics</option>
+                    <option>Software / Web Development</option>
 
-                  <option>Software / Web Development</option>
+                    <option>Research Project</option>
 
-                  <option>Research Project</option>
+                    <option>Social / Community Initiative</option>
 
-                  <option>Social / Community Initiative</option>
+                    <option>Startup / Entrepreneurship</option>
 
-                  <option>Startup / Entrepreneurship</option>
+                    <option>Other</option>
+                  </select>
+                </div>
 
-                  <option>Other</option>
-                </select>
-              </div>
+                <div className="col-span-full">
+                  <label className="text-white text-sm">
+                    Short Description *
+                  </label>
 
-              <div className="col-span-full">
-                <label className="text-white text-sm">
-                  Short Description *
-                </label>
+                  <input
+                    className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
+                    onChange={(e) =>
+                      updateField("project-short", e.target.value)
+                    }
+                  />
+                </div>
 
-                <input
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
-                  onChange={(e) => updateField("project-short", e.target.value)}
-                />
-              </div>
+                <div className="col-span-full">
+                  <label className="text-white text-sm">
+                    Detailed Overview *
+                  </label>
 
-              <div className="col-span-full">
-                <label className="text-white text-sm">
-                  Detailed Overview *
-                </label>
+                  <textarea
+                    rows={5}
+                    className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-2 resize-none"
+                    onChange={(e) =>
+                      updateField("project-detail", e.target.value)
+                    }
+                  ></textarea>
+                </div>
 
-                <textarea
-                  rows={5}
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-2 resize-none"
-                  onChange={(e) =>
-                    updateField("project-detail", e.target.value)
-                  }
-                ></textarea>
-              </div>
+                {/* ROLE */}
 
-              {/* ROLE */}
+                <div className="sm:col-span-4">
+                  <label className="text-white text-sm">Your Role *</label>
 
-              <div className="sm:col-span-4">
-                <label className="text-white text-sm">Your Role *</label>
+                  <input
+                    className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
+                    onChange={(e) => updateField("role", e.target.value)}
+                  />
+                </div>
 
-                <input
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
-                  onChange={(e) => updateField("role", e.target.value)}
-                />
-              </div>
+                {/* GOOGLE DRIVE LINK UPLOAD */}
+                <div className="col-span-full">
+                  <label className="text-white text-sm">
+                    Google Drive Link of Your Project Document *
+                  </label>
 
-              {/* GOOGLE DRIVE LINK UPLOAD */}
-              <div className="col-span-full">
-                <label className="text-white text-sm">
-                  Google Drive Link of Your Project Document *
-                </label>
+                  <input
+                    type="url"
+                    placeholder="Paste your Google Drive link here"
+                    className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
+                    onChange={(e) =>
+                      updateField("project-drive-link", e.target.value)
+                    }
+                    required
+                  />
 
-                <input
-                  type="url"
-                  placeholder="Paste your Google Drive link here"
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
-                  onChange={(e) =>
-                    updateField("project-drive-link", e.target.value)
-                  }
-                  required
-                />
-
-                <p className="text-xs text-gray-400 mt-2">
-                  Upload your project PDF/DOCX to Google Drive → Right click →
-                  Get Link → Set “Anyone with the link can view” → Paste here.
-                </p>
+                  <p className="text-xs text-gray-400 mt-2">
+                    Upload your project PDF/DOCX to Google Drive → Right click →
+                    Get Link → Set “Anyone with the link can view” → Paste here.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* BUTTONS */}
