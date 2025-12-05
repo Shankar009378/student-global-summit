@@ -39,6 +39,16 @@ export async function POST(req) {
             safe(jsonData["year-of-passing"]),
             safe(jsonData["academic-status"]),  // now empty string instead of crashing
             safe(jsonData.eventType),
+
+            safe(jsonData["stall-name"]) || "",
+            safe(jsonData["development-stage"]) || "",
+            safe(jsonData["stall-team"]) || "",
+            safe(jsonData["project-title"]) || "",
+            safe(jsonData["project-category"]) || "",
+            safe(jsonData["project-short"]) || "",
+            safe(jsonData["project-detail"]) || "",
+            safe(jsonData["role"]) || "",
+            safe(jsonData["project-drive-link"]) || "",
         ];
 
 
