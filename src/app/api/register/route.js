@@ -2,7 +2,10 @@ import { google } from "googleapis";
 
 export async function POST(req) {
     try {
-        const body = await req.json();
+        const formData = await req.formData();
+
+        const jsonData = JSON.parse(formData.get("data"));
+        const file = formData.get("file");
 
         // Authenticate Google Sheets API
         const auth = new google.auth.GoogleAuth({
@@ -13,6 +16,36 @@ export async function POST(req) {
             scopes: ["https://www.googleapis.com/auth/spreadsheets"],
         });
 
+        const drive = google.drive({ version: "v3", auth });
+
+        // Upload File to Drive
+        let fileLink = "No file uploaded";
+
+        if (file) {
+            const buffer = Buffer.from(await file.arrayBuffer());
+
+            const uploadRes = await drive.files.create({
+                requestBody: {
+                    name: file.name,
+                    mimeType: file.type,
+                },
+                media: {
+                    mimeType: file.type,
+                    body: buffer,
+                },
+            });
+
+            const fileId = uploadRes.data.id;
+
+            // Make File Public
+            await drive.permissions.create({
+                fileId,
+                requestBody: { role: "reader", type: "anyone" },
+            });
+
+            fileLink = `https://drive.google.com/file/d/${fileId}/view`;
+        }
+
         const sheets = google.sheets({ version: "v4", auth });
 
         // Append form data as a new row
@@ -22,12 +55,14 @@ export async function POST(req) {
             valueInputOption: "RAW",
             requestBody: {
                 values: [
-                    Object.values(body) // row data
+                    ...Object.values(jsonData),
+                    jsonData.eventType,
+                    fileLink,
                 ],
             },
         });
 
-        return Response.json({ success: true });
+        return Response.json({ success: true, fileLink });
     } catch (err) {
         console.error("Google Sheets Error:", err);
         return Response.json({ success: false, error: err.message }, { status: 500 });

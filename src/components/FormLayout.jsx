@@ -11,71 +11,13 @@ const countries = getNames();
 const dialCodes = CountryList.getAll();
 
 export default function FormLayout() {
-  const fileInputRef = useRef(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({});
-  const [file, setFile] = useState(null);
-  const [uploading, setUploading] = useState(false);
-  const [uploadedFileName, setUploadedFileName] = useState("");
   const [eventType, setEventType] = useState("");
 
   // Handle input change
   const updateField = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileUpload = (event) => {
-    const selected = event.target.files[0];
-    if (!selected) return;
-
-    // Fake upload loading animation
-    setUploading(true);
-
-    setTimeout(() => {
-      setFile(selected);
-      setUploadedFileName(selected.name);
-      setUploading(false);
-    }, 1200);
-  };
-
-  // Excel Save Function
-  const saveToExcel = () => {
-    let workbook;
-
-    // Check if Excel already exists in localStorage
-    const existing = localStorage.getItem("global_summit_excel");
-
-    if (existing) {
-      const binary = atob(existing);
-      const bytes = new Uint8Array([...binary].map((c) => c.charCodeAt(0)));
-      workbook = XLSX.read(bytes, { type: "array" });
-    } else {
-      workbook = XLSX.utils.book_new();
-      const sheet = XLSX.utils.json_to_sheet([]);
-      XLSX.utils.book_append_sheet(workbook, sheet, "Submissions");
-    }
-
-    const sheet = workbook.Sheets["Submissions"];
-
-    // Add data as new row
-    XLSX.utils.sheet_add_json(sheet, [formData], {
-      skipHeader: true,
-      origin: -1,
-    });
-
-    const excelBinary = XLSX.write(workbook, {
-      type: "binary",
-      bookType: "xlsx",
-    });
-
-    const base64Excel = btoa(
-      excelBinary
-        .split("")
-        .map((c) => String.fromCharCode(c.charCodeAt(0)))
-        .join("")
-    );
-
-    localStorage.setItem("global_summit_excel", base64Excel);
   };
 
   // Submit Handler
@@ -125,14 +67,9 @@ export default function FormLayout() {
       return;
     }
 
-    if (!file) {
-      alert("Please upload the mandatory Project Document.");
-      return;
-    }
-
     const payload = {
       ...formData,
-      "uploaded-document": uploadedFileName || "No file uploaded",
+      eventType,
     };
 
     const res = await fetch("/api/register", {
@@ -413,7 +350,7 @@ export default function FormLayout() {
               </div>
 
               <div className="sm:col-span-3">
-                <label className="text-white text-sm">GPA (Optional)</label>
+                <label className="text-white text-sm">CGPA (Optional)</label>
                 <input
                   type="text"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
@@ -538,149 +475,26 @@ export default function FormLayout() {
             </div>
           )}
 
-          {/* PROJECT OVERVIEW */}
-          <div className="border-b border-white pb-12">
-            <h2 className="text-yellow-300 font-semibold">Project Overview</h2>
-            <p className="text-pink-600 text-sm">
-              Share details about your project.
+          {/* GOOGLE DRIVE LINK UPLOAD */}
+          <div className="col-span-full">
+            <label className="text-white text-sm">
+              Google Drive Link of Your Project Document *
+            </label>
+
+            <input
+              type="url"
+              placeholder="Paste your Google Drive link here"
+              className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
+              onChange={(e) =>
+                updateField("project-drive-link", e.target.value)
+              }
+              required
+            />
+
+            <p className="text-xs text-gray-400 mt-2">
+              Upload your project PDF/DOCX to Google Drive → Right click → Get
+              Link → Set “Anyone with the link can view” → Paste here.
             </p>
-
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-3">
-                <label className="text-white text-sm">Project Title *</label>
-                <input
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
-                  onChange={(e) => updateField("project-title", e.target.value)}
-                />
-              </div>
-
-              <div className="sm:col-span-3">
-                <label className="text-white text-sm">Category *</label>
-                <select
-                  className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
-                  onChange={(e) =>
-                    updateField("project-category", e.target.value)
-                  }
-                >
-                  <option>AI / Machine Learning</option>
-                  <option>Robotics</option>
-                  <option>Software / Web Development</option>
-                  <option>Research Project</option>
-                  <option>Social / Community Initiative</option>
-                  <option>Startup / Entrepreneurship</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div className="col-span-full">
-                <label className="text-white text-sm">
-                  Short Description *
-                </label>
-                <input
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
-                  onChange={(e) => updateField("project-short", e.target.value)}
-                />
-              </div>
-
-              <div className="col-span-full">
-                <label className="text-white text-sm">
-                  Detailed Overview *
-                </label>
-                <textarea
-                  rows={5}
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-2 resize-none"
-                  onChange={(e) =>
-                    updateField("project-detail", e.target.value)
-                  }
-                ></textarea>
-              </div>
-
-              {/* MANDATORY DOCUMENT UPLOAD */}
-              <div className="col-span-full">
-                <label className="text-white text-sm">
-                  Upload Project Document (PDF or DOCX) *
-                </label>
-
-                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-white/25 px-6 py-10">
-                  <div className="text-center">
-                    <PhotoIcon className="mx-auto size-12 text-gray-600" />
-
-                    <div className="mt-4 flex text-sm text-gray-400">
-                      <label className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300">
-                        <span>Upload Document</span>
-                        <input
-                          type="file"
-                          accept=".pdf,.doc,.docx"
-                          className="sr-only"
-                          ref={fileInputRef}
-                          onChange={handleFileUpload}
-                        />
-                      </label>
-                      <p className="pl-1">or drag and drop</p>
-                    </div>
-
-                    <p className="text-xs text-gray-400">
-                      Only PDF or DOCX | Max 10MB
-                    </p>
-                  </div>
-                </div>
-
-                {uploading && (
-                  <p className="text-yellow-300 mt-3 text-sm animate-pulse">
-                    Uploading document...
-                  </p>
-                )}
-
-                {uploadedFileName && !uploading && (
-                  <div className="mt-4 p-3 bg-white/10 border border-white/20 rounded-md text-white flex items-center justify-between">
-                    <div>
-                      <p className="font-semibold">Uploaded File:</p>
-                      <p className="text-sm text-green-300">
-                        {uploadedFileName}
-                      </p>
-                    </div>
-
-                    {/* ❌ DELETE UPLOADED FILE BUTTON */}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setFile(null);
-                        setUploadedFileName("");
-
-                        // 🔥 FIX: allow re-uploading same file
-                        if (fileInputRef.current) {
-                          fileInputRef.current.value = "";
-                        }
-                      }}
-                      className="ml-4 text-red-400 hover:text-red-300 text-xl font-bold"
-                      title="Remove file"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              {/* TEAM SIZE */}
-              <div className="sm:col-span-2">
-                <label className="text-white text-sm">Team Size *</label>
-                <input
-                  type="number"
-                  min="1"
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
-                  onChange={(e) => updateField("team-size", e.target.value)}
-                />
-              </div>
-
-              {/* ROLE */}
-              <div className="sm:col-span-4">
-                <label className="text-white text-sm">Your Role *</label>
-                <input
-                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
-                  onChange={(e) => updateField("role", e.target.value)}
-                />
-              </div>
-            </div>
           </div>
         </div>
 
