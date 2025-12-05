@@ -12,6 +12,7 @@ import { TextAnimate } from "@/components/ui/text-animate";
 import { HyperText } from "@/components/ui/hyper-text";
 import Link from "next/link";
 import { ComicText } from "@/components/ui/comic-text";
+import confetti from "canvas-confetti";
 
 const navigation = [
   { name: "Theme", href: "#theme" },
@@ -23,6 +24,43 @@ const navigation = [
 
 export default function HeroSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const triggerSpeakerScroll = () => {
+    // 1️⃣ Trigger Confetti
+    const end = Date.now() + 3 * 1000;
+    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
+
+    const frame = () => {
+      if (Date.now() > end) return;
+
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 0, y: 0.5 },
+        colors,
+      });
+
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 1, y: 0.5 },
+        colors,
+      });
+
+      requestAnimationFrame(frame);
+    };
+
+    frame();
+
+    // 2️⃣ Smooth scroll to speakers section
+    document.getElementById("speakers")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="relative min-h-screen">
@@ -97,14 +135,14 @@ export default function HeroSection() {
                   alt="Student Global Summit Logo"
                   className="h-8 w-auto"
                 />
-                <span className="text-black font-bold tracking-wider">
+                <span className="text-white font-bold tracking-wider">
                   Student Global Summit
                 </span>
               </a>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="-m-2.5 rounded-md p-2.5 text-black"
+                className="-m-2.5 rounded-md p-2.5 text-white"
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon aria-hidden="true" className="size-6" />
@@ -143,7 +181,7 @@ export default function HeroSection() {
                           }
                         }, 300); // small delay for animation
                       }}
-                      className="-mx-3 w-full text-left block rounded-lg px-3 py-2 text-base/7 font-bold text-black hover:text-pink-600"
+                      className="-mx-3 w-full text-left block rounded-lg px-3 py-2 text-base/7 font-bold text-white hover:text-pink-600"
                     >
                       {item.name}
                     </button>
@@ -152,7 +190,7 @@ export default function HeroSection() {
 
                 <div className="py-6">
                   <Link href="/register">
-                    <InteractiveHoverButton>
+                    <InteractiveHoverButton className="border border-white">
                       Register Now
                     </InteractiveHoverButton>
                   </Link>
@@ -163,7 +201,7 @@ export default function HeroSection() {
         </Dialog>
       </header>
 
-      <div className="relative isolate px-6 pt-8 lg:px-8">
+      <div className="relative isolate px-6 lg:pt-10 pt-8 lg:px-8">
         <div className="mx-auto max-w-2xl py-4 sm:py-20 lg:py-8">
           <div className="mb-8">
             <ComicText className="text-pink-500 drop-shadow-[0_0_10px_rgba(255,0,200,0.7)]">
@@ -181,7 +219,7 @@ export default function HeroSection() {
             </div>
           </div>
           <div className="text-center">
-            <h1 className="text-5xl font-bold tracking-tight text-balance text-white sm:text-7xl">
+            <h1 className="text-4xl font-bold tracking-tight text-balance text-white sm:text-7xl">
               STUDENT <AuroraText>GLOBAL</AuroraText> SUMMIT 2025
             </h1>
             {/* <TextAnimate
@@ -194,7 +232,7 @@ export default function HeroSection() {
             </TextAnimate> */}
 
             <HyperText
-              className="mt-6 text-xl font-semibold text-yellow-300 sm:text-2xl"
+              className="mt-6 text-lg font-bold text-yellow-300 sm:text-2xl"
               duration={1200}
               delay={500}
             >
@@ -206,20 +244,20 @@ export default function HeroSection() {
               by="word"
               delay={0.2}
               duration={0.6}
-              className="mt-4 text-lg text-white sm:text-xl"
+              className="mt-4 text-md  text-white sm:text-xl"
             >
               Jointly Organized By Veer Surendra Sai University of Technology &
               Utkal University, Odisha • Supported By Higher Education
               Department • Government of Odisha
             </TextAnimate>
 
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 gap-x-6 w-full px-4">
               <Link href="/register">
                 <InteractiveHoverButton className="backdrop-blur-xl bg-white border-b border-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
                   Register Now
                 </InteractiveHoverButton>
               </Link>
-              <button
+              {/* <button
                 onClick={() => {
                   const theme = document.querySelector("#theme");
                   theme?.scrollIntoView({ behavior: "smooth" });
@@ -227,7 +265,16 @@ export default function HeroSection() {
                 className="text-md font-semibold text-yellow-300 hover:text-yellow-400 cursor-pointer"
               >
                 Learn more →
-              </button>
+              </button> */}
+
+              <a href="#speakers">
+                <InteractiveHoverButton
+                  onClick={triggerSpeakerScroll}
+                  className="backdrop-blur-xl bg-white border-b border-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+                >
+                  See Speakers
+                </InteractiveHoverButton>
+              </a>
             </div>
           </div>
         </div>

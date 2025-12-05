@@ -9,15 +9,15 @@ import SouravBharadwaj from "@/assets/images/sourav-bharadwaj.jpg";
 import SukanyaDas from "@/assets/images/sukanya-das.jpeg";
 import ChandanMalu from "@/assets/images/chandan-malu.jpeg";
 import HeeCheolKim from "@/assets/images/hee.jpeg";
-// import DebiProsadDogra from "@/assets/images/debi.png";
-import Padmalochan from "@/assets/images/padmalochan.png";
-import Bodhisattwa from "@/assets/images/bodhisattwa.jpg";
+import DebiProsadDogra from "@/assets/images/debi.png";
+// import Padmalochan from "@/assets/images/padmalochan.png";
+// import Bodhisattwa from "@/assets/images/bodhisattwa.jpg";
 import SubiniKumarRath from "@/assets/images/subini.jpeg";
 import SubrataKumarPanda from "@/assets/images/subrata.webp";
 import SugyaniMohapatra from "@/assets/images/sugyani.jpg";
 import HimansuTripathy from "@/assets/images/himansu.jpeg";
 // import ParichayPattnaik from "@/assets/images/parichay.jpeg";
-import Logo from "@/assets/images/logo.png";
+import HariSaranDash from "@/assets/images/hari.jpeg";
 
 export default function SpeakersSection() {
   return (
@@ -99,15 +99,15 @@ export default function SpeakersSection() {
             hover:bg-summit-pink/20 hover:border-summit-pink transition cursor-pointer hover:scale-[1.05] hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,0,128,0.25)]"
           >
             <Image
-              src={Logo}
-              alt="Mr. Hari Saran Dash"
+              src={HariSaranDash}
+              alt="Mr. Harisaran Dash"
               width={128}
               height={128}
               className="w-32 h-32 rounded-full object-cover object-top ring-4 ring-gray-300"
             />
 
             <h1 className="mt-4 text-lg font-semibold text-yellow-300 text-center">
-              Mr. Hari Saran Dash
+              Mr. Harisaran Dash
             </h1>
 
             <p className="mt-1 text-sm font-medium text-white text-center">
@@ -350,6 +350,32 @@ export default function SpeakersSection() {
             hover:bg-summit-pink/20 hover:border-summit-pink transition cursor-pointer hover:scale-[1.05] hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,0,128,0.25)]"
           >
             <Image
+              src={DebiProsadDogra}
+              alt="Dr. Debi Prosad Dogra"
+              width={128}
+              height={128}
+              className="w-32 h-32 rounded-full object-cover object-top ring-4 ring-gray-300"
+            />
+
+            <h1 className="mt-4 text-lg font-semibold text-yellow-300 text-center">
+              Dr. Debi Prosad Dogra
+            </h1>
+
+            <p className="mt-1 text-sm font-medium text-white text-center">
+              Head, Department of CSE
+            </p>
+
+            <p className="text-sm text-white mt-1 text-center">
+              IIT, Bhubaneswar
+            </p>
+          </div>
+
+          {/* <div
+            className="flex flex-col items-center p-8 rounded-2xl 
+            bg-white/5 border border-white backdrop-blur-md
+            hover:bg-summit-pink/20 hover:border-summit-pink transition cursor-pointer hover:scale-[1.05] hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,0,128,0.25)]"
+          >
+            <Image
               src={Padmalochan}
               alt="Dr. Padmalochan Bera"
               width={128}
@@ -368,7 +394,7 @@ export default function SpeakersSection() {
             <p className="text-sm text-white mt-1 text-center">
               IIT, Bhubaneswar
             </p>
-          </div>
+          </div> */}
 
           <div
             className="flex flex-col items-center p-8 rounded-2xl 
@@ -445,32 +471,6 @@ export default function SpeakersSection() {
 
             <p className="text-sm text-white mt-1 text-center">
               TCS, Bhubaneswar
-            </p>
-          </div> */}
-
-          {/* <div
-            className="flex flex-col items-center p-8 rounded-2xl 
-            bg-white/5 border border-white backdrop-blur-md
-            hover:bg-summit-pink/20 hover:border-summit-pink transition cursor-pointer hover:scale-[1.05] hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,0,128,0.25)]"
-          >
-            <Image
-              src={DebiProsadDogra}
-              alt="Dr. Debi Prosad Dogra"
-              width={128}
-              height={128}
-              className="w-32 h-32 rounded-full object-cover object-top ring-4 ring-gray-300"
-            />
-
-            <h1 className="mt-4 text-lg font-semibold text-yellow-300 text-center">
-              Dr. Debi Prosad Dogra
-            </h1>
-
-            <p className="mt-1 text-sm font-medium text-white text-center">
-              Head, Department of CSE
-            </p>
-
-            <p className="text-sm text-white mt-1 text-center">
-              IIT, Bhubaneswar
             </p>
           </div> */}
         </div>

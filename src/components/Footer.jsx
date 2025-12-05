@@ -91,7 +91,7 @@ export default function Footer() {
 
             {/* Discord */}
             <a
-              href="https://discord.com"
+              href="https://discord.gg/R4RAKrBKa"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/60 hover:text-yellow-300 transition"
@@ -111,7 +111,7 @@ export default function Footer() {
 
             {/* Twitter */}
             <a
-              href="https://x.com"
+              href="https://x.com/sgsummit2025?s=11"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/60 hover:text-yellow-300 transition"
