@@ -95,8 +95,11 @@ export default function FormLayout() {
     const response = await res.json();
 
     if (response.success) {
-      alert("You have successfully submitted the form!");
+      // alert("You have successfully submitted the form!");
       setShowSuccess(true);
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
       setTimeout(() => setShowSuccess(false), 3000);
 
       e.target.reset();
@@ -157,6 +160,7 @@ export default function FormLayout() {
               <div className="sm:col-span-3">
                 <label className="text-white text-sm">First name *</label>
                 <input
+                  name="first-name"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) => updateField("first-name", e.target.value)}
                 />
@@ -166,6 +170,7 @@ export default function FormLayout() {
               <div className="sm:col-span-3">
                 <label className="text-white text-sm">Last name *</label>
                 <input
+                  name="last-name"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) => updateField("last-name", e.target.value)}
                 />
@@ -175,6 +180,7 @@ export default function FormLayout() {
               <div className="sm:col-span-4">
                 <label className="text-white text-sm">Email *</label>
                 <input
+                  name="email"
                   type="email"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) => updateField("email", e.target.value)}
@@ -188,6 +194,7 @@ export default function FormLayout() {
                   {/* DIAL CODE */}
                   <div className="relative w-48">
                     <select
+                      name="dial-code"
                       className="w-full bg-white/5 text-white rounded-md py-1.5 pl-3 pr-8"
                       onChange={(e) => updateField("dial-code", e.target.value)}
                     >
@@ -204,6 +211,7 @@ export default function FormLayout() {
 
                   {/* PHONE */}
                   <input
+                    name="phone"
                     className="w-full bg-white/5 text-white rounded-md px-3 py-1.5"
                     onChange={(e) => updateField("phone", e.target.value)}
                   />
@@ -214,6 +222,7 @@ export default function FormLayout() {
               <div className="sm:col-span-3">
                 <label className="text-white text-sm">Country *</label>
                 <select
+                  name="country"
                   className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
                   onChange={(e) => updateField("country", e.target.value)}
                 >
@@ -227,6 +236,7 @@ export default function FormLayout() {
               <div className="sm:col-span-1">
                 <label className="text-white text-sm">Age *</label>
                 <input
+                  name="age"
                   type="number"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) => updateField("age", e.target.value)}
@@ -237,6 +247,7 @@ export default function FormLayout() {
               <div className="sm:col-span-2">
                 <label className="text-white text-sm">Gender *</label>
                 <select
+                  name="gender"
                   className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
                   onChange={(e) => updateField("gender", e.target.value)}
                 >
@@ -251,6 +262,7 @@ export default function FormLayout() {
               <div className="col-span-full">
                 <label className="text-white text-sm">Street Address *</label>
                 <input
+                  name="street-address"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) =>
                     updateField("street-address", e.target.value)
@@ -262,6 +274,7 @@ export default function FormLayout() {
               <div className="sm:col-span-2">
                 <label className="text-white text-sm">City *</label>
                 <input
+                  name="city"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) => updateField("city", e.target.value)}
                 />
@@ -271,6 +284,7 @@ export default function FormLayout() {
               <div className="sm:col-span-2">
                 <label className="text-white text-sm">State / Province *</label>
                 <input
+                  name="region"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) => updateField("region", e.target.value)}
                 />
@@ -280,6 +294,7 @@ export default function FormLayout() {
               <div className="sm:col-span-2">
                 <label className="text-white text-sm">Postal Code *</label>
                 <input
+                  name="postal-code"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) => updateField("postal-code", e.target.value)}
                 />
@@ -302,6 +317,7 @@ export default function FormLayout() {
                   Highest Qualification *
                 </label>
                 <select
+                  name="highest-qualification"
                   className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
                   onChange={(e) =>
                     updateField("highest-qualification", e.target.value)
@@ -319,6 +335,7 @@ export default function FormLayout() {
               <div className="sm:col-span-3">
                 <label className="text-white text-sm">Field of Study *</label>
                 <input
+                  name="field-of-study"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) =>
                     updateField("field-of-study", e.target.value)
@@ -329,6 +346,7 @@ export default function FormLayout() {
               <div className="col-span-full">
                 <label className="text-white text-sm">Institution Name *</label>
                 <input
+                  name="institution-name"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) =>
                     updateField("institution-name", e.target.value)
@@ -339,6 +357,7 @@ export default function FormLayout() {
               <div className="sm:col-span-3">
                 <label className="text-white text-sm">Year of Passing *</label>
                 <input
+                  name="year-of-passing"
                   type="number"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) =>
@@ -350,6 +369,7 @@ export default function FormLayout() {
               <div className="sm:col-span-3">
                 <label className="text-white text-sm">Academic Status *</label>
                 <select
+                  name="academic-status"
                   className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
                   onChange={(e) =>
                     updateField("academic-status", e.target.value)
@@ -364,6 +384,7 @@ export default function FormLayout() {
               <div className="sm:col-span-3">
                 <label className="text-white text-sm">CGPA (Optional)</label>
                 <input
+                  name="gpa"
                   type="text"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) => updateField("gpa", e.target.value)}
@@ -375,6 +396,7 @@ export default function FormLayout() {
                   Student ID (Optional)
                 </label>
                 <input
+                  name="student-id"
                   className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                   onChange={(e) => updateField("student-id", e.target.value)}
                 />
@@ -436,6 +458,7 @@ export default function FormLayout() {
                     Startup / Project Name *
                   </label>
                   <input
+                    name="stall-name"
                     className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                     onChange={(e) => updateField("stall-name", e.target.value)}
                   />
@@ -446,6 +469,7 @@ export default function FormLayout() {
                     Stage of Development *
                   </label>
                   <select
+                    name="development-stage"
                     className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
                     onChange={(e) =>
                       updateField("development-stage", e.target.value)
@@ -477,6 +501,7 @@ export default function FormLayout() {
                     Team Members Present *
                   </label>
                   <input
+                    name="stall-team"
                     type="number"
                     min="1"
                     className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
@@ -503,6 +528,7 @@ export default function FormLayout() {
                   <label className="text-white text-sm">Project Title *</label>
 
                   <input
+                    name="project-title"
                     className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                     onChange={(e) =>
                       updateField("project-title", e.target.value)
@@ -514,6 +540,7 @@ export default function FormLayout() {
                   <label className="text-white text-sm">Category *</label>
 
                   <select
+                    name="project-category"
                     className="mt-2 bg-white/5 text-white rounded-md w-full py-1.5 px-3"
                     onChange={(e) =>
                       updateField("project-category", e.target.value)
@@ -541,6 +568,7 @@ export default function FormLayout() {
                   </label>
 
                   <input
+                    name="project-short"
                     className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                     onChange={(e) =>
                       updateField("project-short", e.target.value)
@@ -554,6 +582,7 @@ export default function FormLayout() {
                   </label>
 
                   <textarea
+                    name="project-detail"
                     rows={5}
                     className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-2 resize-none"
                     onChange={(e) =>
@@ -568,6 +597,7 @@ export default function FormLayout() {
                   <label className="text-white text-sm">Your Role *</label>
 
                   <input
+                    name="role"
                     className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
                     onChange={(e) => updateField("role", e.target.value)}
                   />
@@ -580,6 +610,7 @@ export default function FormLayout() {
                   </label>
 
                   <input
+                    name="project-drive-link"
                     type="url"
                     placeholder="Paste your Google Drive link here"
                     className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
