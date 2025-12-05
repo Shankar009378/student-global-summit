@@ -26,7 +26,16 @@ export default function FormLayout() {
       return;
     }
 
-    // Validate Required Fields
+    // Read actual form values (captures autofill too)
+    const formValues = new FormData(e.target);
+
+    // Convert to JS object
+    const data = Object.fromEntries(formValues.entries());
+
+    // Add event type
+    data.eventType = eventType;
+
+    // Required fields
     const baseRequired = [
       "first-name",
       "last-name",
@@ -58,43 +67,38 @@ export default function FormLayout() {
         : baseRequired;
 
     for (const field of requiredFields) {
-      if (!formData[field] || formData[field].trim() === "") {
+      if (!data[field] || data[field].trim() === "") {
         alert(`Please fill the required field: ${field}`);
         return;
       }
     }
 
-    if (!/^\d{10}$/.test(formData["phone"])) {
+    if (!/^\d{10}$/.test(data["phone"])) {
       alert("Mobile number must be exactly 10 digits.");
       return;
     }
 
-    if (!/^\d{6}$/.test(formData["postal-code"])) {
+    if (!/^\d{6}$/.test(data["postal-code"])) {
       alert("Postal code must be exactly 6 digits.");
       return;
     }
 
-    const payload = {
-      ...formData,
-      eventType,
-    };
-
+    // Send to backend
     const fd = new FormData();
-    fd.append("data", JSON.stringify(payload));
+    fd.append("data", JSON.stringify(data));
 
     const res = await fetch("/api/register", {
       method: "POST",
       body: fd,
     });
 
-    const data = await res.json();
+    const response = await res.json();
 
-    if (data.success) {
+    if (response.success) {
       alert("You have successfully submitted the form!");
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 3000);
 
-      setFormData({});
       e.target.reset();
     } else {
       alert("Something went wrong while submitting.");
