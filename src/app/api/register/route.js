@@ -40,6 +40,8 @@ export async function POST(req) {
             safe(jsonData["academic-status"]),  // now empty string instead of crashing
             safe(jsonData.eventType),
 
+            safe(jsonData["article-drive-link"]) || "",
+
             safe(jsonData["stall-name"]) || "",
             safe(jsonData["development-stage"]) || "",
             safe(jsonData["stall-team"]) || "",
@@ -50,7 +52,6 @@ export async function POST(req) {
             safe(jsonData["role"]) || "",
             safe(jsonData["project-drive-link"]) || "",
         ];
-
 
         await sheets.spreadsheets.values.append({
             spreadsheetId: process.env.GOOGLE_SHEETS_SPREADSHEET_ID,

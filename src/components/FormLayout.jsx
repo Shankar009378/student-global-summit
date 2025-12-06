@@ -61,10 +61,20 @@ export default function FormLayout() {
       "project-drive-link",
     ];
 
-    const requiredFields =
-      eventType === "startup"
-        ? [...baseRequired, ...startupRequired]
-        : baseRequired;
+    // const requiredFields =
+    //   eventType === "startup"
+    //     ? [...baseRequired, ...startupRequired]
+    //     : baseRequired;
+
+    let requiredFields = baseRequired;
+
+    if (eventType === "startup") {
+      requiredFields = [
+        ...baseRequired,
+        ...startupRequired,
+        "article-drive-link",
+      ];
+    }
 
     for (const field of requiredFields) {
       if (!data[field] || data[field].trim() === "") {
@@ -110,24 +120,56 @@ export default function FormLayout() {
 
   return (
     <>
-      {/* SUCCESS ALERT */}
+      {/* SUCCESS POPUP */}
       {showSuccess && (
-        <div className="flex w-full max-w-sm mx-auto mt-6 overflow-hidden bg-white rounded-lg shadow-md">
-          <div className="flex items-center justify-center w-12 bg-emerald-500">
-            <svg
-              className="w-6 h-6 text-white fill-current"
-              viewBox="0 0 40 40"
-            >
-              <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
-            </svg>
-          </div>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-50">
+          <div className="bg-white rounded-2xl shadow-xl p-8 w-[90%] max-w-md text-center animate-fadeIn">
+            {/* Checkmark Icon */}
+            <div className="mx-auto mb-4 w-16 h-16 rounded-full bg-green-500 flex items-center justify-center">
+              <svg
+                className="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
 
-          <div className="px-4 py-2 -mx-3">
-            <div className="mx-3">
-              <span className="font-semibold text-emerald-500">Success</span>
-              <p className="text-sm text-gray-600">
-                Your registration was submitted!
-              </p>
+            {/* Success Text */}
+            <h2 className="text-2xl font-bold text-green-600">
+              Form Successfully Submitted!
+            </h2>
+            <p className="text-gray-700 mt-2">
+              Thank you for registering. Stay connected with our community!
+            </p>
+
+            {/* SOCIAL BUTTONS */}
+            <div className="mt-6 flex flex-col gap-4">
+              {/* WHATSAPP COMMUNITY BUTTON */}
+              <a
+                href="https://whatsapp.com/channel/0029Vb6jMIq6buMDQ1E1nG1X"
+                target="_blank"
+                className="flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-lg transition-all duration-300 shadow-md"
+              >
+                <img src="/whatsapp-icon.png" className="w-6 h-6" />
+                Join WhatsApp Community
+              </a>
+
+              {/* INSTAGRAM BUTTON */}
+              <a
+                href="https://www.instagram.com/studentglobalsummit"
+                target="_blank"
+                className="flex items-center justify-center gap-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 rounded-lg transition-all duration-300 shadow-md"
+              >
+                <img src="/instagram-icon.png" className="w-6 h-6" />
+                Follow on Instagram
+              </a>
             </div>
           </div>
         </div>
@@ -439,8 +481,46 @@ export default function FormLayout() {
                   Voices of Future – The Global Policy Nexus (Policy Debate)
                 </span>
               </label>
+
+              <label className="flex items-center gap-3 text-white">
+                <input
+                  type="radio"
+                  name="eventType"
+                  value="participant"
+                  onChange={() => setEventType("participant")}
+                  className="w-4 h-4"
+                />
+                <span className="text-sm font-medium">
+                  Delegate Pass – Exclusive Participant Access
+                </span>
+              </label>
             </div>
           </div>
+
+          {eventType === "participant" && (
+            <div className="border-b border-white pb-12 mt-6">
+              <h2 className="text-yellow-300 font-semibold">
+                Delegate Perks & Benefits
+              </h2>
+
+              <p className="text-pink-600 text-sm mt-2">
+                Enjoy premium access designed exclusively for registered
+                delegates.
+              </p>
+
+              <ul className="mt-5 space-y-3 text-white text-sm list-disc list-inside">
+                <li>
+                  Accommodation arrangements are not included as part of this
+                  registration
+                </li>
+                <li>Access to all keynote sessions & expert talks</li>
+                <li>Priority seating at flagship events</li>
+                <li>Exclusive interaction lounge with speakers & mentors</li>
+                <li>Participation E-certificate with premium badge</li>
+                <li>Access to networking & collaboration opportunities</li>
+              </ul>
+            </div>
+          )}
 
           {/* STALL INFORMATION — Only for Startup Exhibition */}
           {eventType === "startup" && (
@@ -508,6 +588,56 @@ export default function FormLayout() {
                     onChange={(e) => updateField("stall-team", e.target.value)}
                   />
                 </div>
+              </div>
+            </div>
+          )}
+
+          {eventType === "startup" && (
+            <div className="border-b border-white pb-12 mt-6">
+              <h2 className="text-yellow-300 font-semibold">
+                Technical Article Submission (Summit Theme)
+              </h2>
+
+              <p className="text-pink-600 text-sm mt-2">
+                Submit a technical article based on the theme of the summit –
+                UUJCC (Udyamita, Unnati, Josh & Cultural Confluence). Follow the
+                guidelines provided in the Call for Papers document.
+              </p>
+
+              {/* DOWNLOAD BUTTON FOR CALL FOR PAPERS */}
+              <a
+                href="/callforpaper.pdf"
+                download
+                className="inline-block mt-4 px-4 py-2 rounded-md text-white font-semibold bg-gradient-to-r from-pink-600 to-pink-700
+             hover:from-yellow-300 hover:to-yellow-400 hover:text-black
+             hover:shadow-[0_0_18px_rgba(255,230,0,0.6)]
+             transition-all duration-300"
+              >
+                📄 Download Call for Papers
+              </a>
+
+              <p className="text-xs text-white mt-3">
+                Prepare your article according to the instructions above. Upload
+                your final document (PDF/DOCX) to Google Drive, set visibility
+                to “Anyone with the link can view”, and paste the link below.
+              </p>
+
+              {/* GOOGLE DRIVE ARTICLE LINK */}
+              <div className="mt-6">
+                <label className="text-white text-sm">
+                  Google Drive Link of Your Technical Article *
+                </label>
+
+                <input
+                  name="article-drive-link"
+                  type="url"
+                  placeholder="Paste Google Drive link for technical article"
+                  className="mt-2 bg-white/5 text-white rounded-md w-full px-3 py-1.5"
+                  required
+                  onChange={(e) =>
+                    updateField("article-drive-link", e.target.value)
+                  }
+                />
               </div>
             </div>
           )}
@@ -620,9 +750,10 @@ export default function FormLayout() {
                     required
                   />
 
-                  <p className="text-xs text-gray-400 mt-2">
+                  <p className="text-xs text-white mt-2">
                     Upload your project PDF/DOCX to Google Drive → Right click →
-                    Get Link → Set “Anyone with the link can view” → Paste here.
+                    Get Link → Set “Anyone with the link can view(Public Link)”
+                    → Paste here.
                   </p>
                 </div>
               </div>
@@ -632,12 +763,22 @@ export default function FormLayout() {
 
         {/* BUTTONS */}
         <div className="mt-6 flex items-center justify-end gap-x-6">
-          <button type="button" className="text-white font-semibold">
+          <button
+            type="button"
+            className="text-white font-semibold cursor-pointer px-4 py-2 rounded-md 
+             hover:bg-white/10 hover:text-yellow-300 
+             hover:shadow-[0_0_12px_rgba(255,255,255,0.3)] 
+             transition-all duration-300"
+          >
             Cancel
           </button>
           <button
             type="submit"
-            className="bg-pink-600 px-4 py-2 rounded-md text-white font-semibold"
+            className="px-4 py-2 rounded-md text-white font-semibold cursor-pointer
+             bg-gradient-to-r from-pink-600 to-pink-700
+             hover:from-yellow-300 hover:to-yellow-400 hover:text-black
+             hover:shadow-[0_0_18px_rgba(255,230,0,0.6)]
+             transition-all duration-300"
           >
             Submit
           </button>
