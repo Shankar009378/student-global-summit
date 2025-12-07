@@ -18,7 +18,7 @@ export default function RewardsSection() {
             WIN BIG REWARDS
           </TextAnimate>
 
-          <p className="max-w-lg mx-auto text-xs lg:text-lg mt-4 text-white">
+          <p className="max-w-lg mx-auto text-xs lg:text-lg mt-4 text-white font-semibold">
             Your ideas have value. Earn rewards, visibility, and
             government-backed recognition for your brilliance.
           </p>
