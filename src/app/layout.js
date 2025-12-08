@@ -12,8 +12,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Student Global Summit 2025 | India's Biggest Youth Leadership Summit",
+  metadataBase: new URL("https://studentglobalsummit.com"),
+
+  title: {
+    default: "Student Global Summit 2025 | India's Biggest Youth Leadership Summit",
+    template: "%s | Student Global Summit 2025",
+  },
+
   description: "Join the Student Global Summit 2025 — A 3-day transformative event featuring startups, policy debates, innovation showcases, cultural events, and networking with leaders.",
+
   keywords: [
     "Student Global Summit",
     "Students Global Summit",
@@ -24,15 +31,30 @@ export const metadata = {
     "Tech Summit India",
     "Student Conference 2025",
   ],
-  authors: [{ name: "Student Global Summit Team" }],
+
+  alternates: {
+    canonical: "https://studentglobalsummit.com",
+  },
+
+  category: "Education",
+
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
+
+  authors: [{ name: "Student Global Summit Team" }],
+  creator: "Student Global Summit",
+  publisher: "Student Global Summit",
+
   openGraph: {
     title: "Student Global Summit 2025",
     description:
@@ -44,16 +66,29 @@ export const metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
+        alt: "Student Global Summit 2025 Banner",
       },
     ],
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Student Global Summit 2025",
+    description:
+      "Empowering youth through innovation, entrepreneurship, global policy, and leadership.",
+    site: "@sgsummit2025",
+    creator: "@sgsummit2025",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/icon.png",
     apple: "/apple-touch-icon.png",
-  }
+  },
+  manifest: "/manifest.json",
+
+  themeColor: "#000000",
 };
 
 export default function RootLayout({ children }) {

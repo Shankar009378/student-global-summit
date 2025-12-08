@@ -1,6 +1,12 @@
 import { TextAnimate } from "@/components/ui/text-animate";
 import Image from "next/image";
 import Vssut from "@/assets/images/vssut.png";
+import BPUT from "@/assets/images/biju.png";
+import OUTR from "@/assets/images/outr.png";
+import OUAC from "@/assets/images/ouac.png";
+import OSOU from "@/assets/images/osou.png";
+import Sambalpur from "@/assets/images/sambalpur.png";
+import Gangadhar from "@/assets/images/gangadhar.png";
 import EduMin from "@/assets/images/educ-min.svg";
 import Utkal from "@/assets/images/utkal.png";
 import Odisha from "@/assets/images/odisha.png";
@@ -14,7 +20,7 @@ export default function LogoClouds() {
         <TextAnimate
           animation="blurInUp"
           by="character"
-          duration={5}
+          duration={1.5}
           className="text-center text-xl font-semibold text-white"
         >
           Trusted by Leading Government, Academic & Technology Partners
@@ -54,6 +60,42 @@ export default function LogoClouds() {
             src={DigitalIndia}
             alt="Digital India Logo"
             className="h-40 w-auto filter brightness-0 invert"
+          />
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-10">
+        <div className="mx-auto mt-10 grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 md:grid-cols-3 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
+          <Image src={BPUT} alt="BPUT Logo" className="h-40 w-auto" />
+
+          <Image
+            src={Sambalpur}
+            alt="Sambalpur University Logo"
+            className="h-40 w-auto filter brightness-0 invert"
+          />
+
+          <Image
+            src={OUTR}
+            alt="Odisha University of Technology and Research Logo"
+            className="h-40 w-auto"
+          />
+
+          <Image
+            src={Gangadhar}
+            alt="Gangadhar Meher University Logo"
+            className="h-40 w-auto"
+          />
+
+          <Image
+            src={OUAC}
+            alt="Odisha University of Agriculture & Technology Logo"
+            className="h-40 w-auto filter brightness-0 invert"
+          />
+
+          <Image
+            src={OSOU}
+            alt="Odisha State Open University Logo"
+            className="h-40 w-auto"
           />
         </div>
       </div>
