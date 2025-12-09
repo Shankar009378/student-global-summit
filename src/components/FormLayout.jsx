@@ -600,8 +600,8 @@ export default function FormLayout() {
 
               <p className="text-pink-600 text-sm mt-2">
                 Submit a technical article based on the theme of the summit –
-                UUJCC (Udyamita, Unnati, Josh & Cultural Confluence). Follow the
-                guidelines provided in the Call for Papers document.
+                UUJCC (Utkal University Journal of Computing & Communications).
+                Follow the guidelines provided in the Call for Papers document.
               </p>
 
               {/* DOWNLOAD BUTTON FOR CALL FOR PAPERS */}

@@ -241,12 +241,18 @@ export default function RewardsSection() {
         )}
 
         {/* Bottom Button */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex justify-center gap-5">
           <Link href="/register">
             <InteractiveHoverButton className="px-6 py-3 text-sm font-semibold bg-white">
               Register Now
             </InteractiveHoverButton>
           </Link>
+
+          <a href="/callforpaper.pdf" download>
+            <InteractiveHoverButton className="px-6 py-3 text-sm font-semibold bg-white">
+              Call For Paper
+            </InteractiveHoverButton>
+          </a>
         </div>
       </div>
     </section>
