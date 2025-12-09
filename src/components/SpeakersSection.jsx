@@ -111,11 +111,11 @@ export default function SpeakersSection() {
             </h1>
 
             <p className="mt-1 text-sm font-medium text-white text-center">
-              Senior Product Manager
+              AI/ML Expert
             </p>
 
             <p className="text-sm text-white mt-1 text-center">
-              Apple, United States
+              California, United States
             </p>
           </div>
 
