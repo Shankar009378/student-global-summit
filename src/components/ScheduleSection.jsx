@@ -115,7 +115,7 @@ export default function ScheduleSection() {
       },
       {
         time: "10:45 AM",
-        event: "Keynote Session by Mr. Harisaran Dash, Senior Product Manager, Apple Inc., California, United States",
+        event: "Keynote Session by Mr. Harisaran Dash, AI/ML Expert, California, United States",
       },
       {
         time: "11:30 AM",
