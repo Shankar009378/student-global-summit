@@ -26,7 +26,7 @@ const features = [
 ];
 
 const stats = [
-  { name: "Participating Delegates", value: "2000+" },
+  { name: "Participating Delegates", value: "10000+" },
   { name: "No. of Days", value: "3" },
   { name: "Participating Institutions", value: "50+" },
   { name: "Scholarships & Grants", value: "₹10L+" },
@@ -41,14 +41,12 @@ function parseStatValue(value) {
 }
 
 export default function HeaderSection() {
-
   const triggerSpeakerScroll = () => {
     const duration = 5 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-    const randomInRange = (min, max) =>
-      Math.random() * (max - min) + min;
+    const randomInRange = (min, max) => Math.random() * (max - min) + min;
 
     const interval = window.setInterval(() => {
       const timeLeft = animationEnd - Date.now();
@@ -118,11 +116,8 @@ export default function HeaderSection() {
           >
             Governance of AI — Ethics, Policy & Student Power
           </TypingAnimation>
-          <p className="mt-4 text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
-            This Summit flips the old narrative. Celebrating Indian students not
-            as cheap talent but as creators of billion $ outcomes. For 3 days it
-            brings together students, founders, and innovators to explore the
-            blend of culture, code and ethics shaping the future. See you there!
+          <p className="mt-4 text-lg font-medium text-pretty text-gray-300 sm:text-lg/8">
+            AMRIT-PEEDHI: Students Global Summit 2025 is a national platform bringing together students, innovators, founders, policymakers & industry leaders to explore the future of Ethical Artificial Intelligence, Innovation & Youth Leadership. Organised by VSSUT Burla, in collaboration with Utkal University and supported by the Government of Odisha, this summit contributes to the vision of Viksit Odisha @2036 and aligns with Odisha’s emerging AI Mission.
           </p>
         </div>
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">

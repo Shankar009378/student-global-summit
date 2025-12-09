@@ -205,7 +205,7 @@ export default function HeroSection() {
         <div className="mx-auto max-w-2xl py-4 sm:py-20 lg:py-8">
           <div className="mb-8">
             <ComicText className="text-pink-500 drop-shadow-[0_0_10px_rgba(255,0,200,0.7)]">
-              FREE TO PARTICIPATE
+              100% FREE REGISTRATION
             </ComicText>
           </div>
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">

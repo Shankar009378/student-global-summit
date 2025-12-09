@@ -42,11 +42,13 @@ export default function Footer() {
 
           {/* Buttons */}
           <div className="flex flex-col mt-6 sm:flex-row sm:items-center sm:justify-center gap-5">
-            <InteractiveHoverButton className="backdrop-blur-xl bg-white border border-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
-              Download Student Brochure
-            </InteractiveHoverButton>
-
             <a href="/brochure.pdf" download>
+              <InteractiveHoverButton className="backdrop-blur-xl bg-white border border-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+                Download Student Brochure
+              </InteractiveHoverButton>
+            </a>
+
+            <a href="/partnership.pdf" download>
               <InteractiveHoverButton className="backdrop-blur-xl bg-white border border-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
                 Download Partnership Brochure
               </InteractiveHoverButton>

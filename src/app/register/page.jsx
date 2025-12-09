@@ -52,7 +52,7 @@ export default function RegisterPage() {
         {/* ⭐ COMIC FREE BADGE */}
         <div className="flex justify-center mb-12">
           <ComicText className="text-pink-500 drop-shadow-[0_0_10px_rgba(255,0,200,0.7)]">
-            FREE TO PARTICIPATE
+            100% FREE REGISTRATION
           </ComicText>
         </div>
 

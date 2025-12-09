@@ -25,7 +25,7 @@ export default function RewardsSection() {
 
           <div className="mb-3 mt-4">
             <ComicText className="text-pink-500 drop-shadow-[0_0_10px_rgba(255,0,200,0.7)]">
-              FREE TO PARTICIPATE
+              100% FREE REGISTRATION
             </ComicText>
           </div>
         </div>
