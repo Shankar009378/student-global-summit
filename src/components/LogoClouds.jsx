@@ -14,6 +14,7 @@ import TCS from "@/assets/images/tcs.png";
 import Infosys from "@/assets/images/infosys.webp";
 import RedBull from "@/assets/images/redbull.png";
 import KFC from "@/assets/images/kfc.png";
+import Centurion from "@/assets/images/centurion.png";
 
 export default function LogoClouds() {
   return (
@@ -88,25 +89,23 @@ export default function LogoClouds() {
             className="h-40 w-auto"
           />
 
+          <Image src={Centurion} alt="Centurion Logo" className="h-40 w-auto" />
+
           <Image
             src={TCS}
             alt="Tata Consultancy Services Logo"
             className="h-40 w-auto"
           />
-
-          <Image src={Infosys} alt="Infosys Logo" className="h-40 w-auto" />
         </div>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-10">
         <div className="mx-auto mt-10 grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 md:grid-cols-3 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
+          <Image src={Infosys} alt="Infosys Logo" className="h-40 w-auto" />
+
           <Image src={RedBull} alt="Red Bull Logo" className="h-40 w-auto" />
 
-          <Image
-            src={KFC}
-            alt="KFC Logo"
-            className="h-40 w-auto"
-          />
+          <Image src={KFC} alt="KFC Logo" className="h-40 w-auto" />
 
           {/* <Image
             src={OUAC}
