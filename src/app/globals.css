@@ -229,3 +229,22 @@ html {
     animation: none;
     mix-blend-mode: normal;
 }
+
+@keyframes logoIntro {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-logoIntro {
+  animation: logoIntro 1.2s ease-out forwards;
+}
