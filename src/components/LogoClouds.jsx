@@ -13,6 +13,7 @@ import Odisha from "@/assets/images/odisha.png";
 import TCS from "@/assets/images/tcs.png";
 import Infosys from "@/assets/images/infosys.webp";
 import RedBull from "@/assets/images/redbull.png";
+import KFC from "@/assets/images/kfc.png";
 
 export default function LogoClouds() {
   return (
@@ -101,13 +102,13 @@ export default function LogoClouds() {
         <div className="mx-auto mt-10 grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 md:grid-cols-3 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
           <Image src={RedBull} alt="Red Bull Logo" className="h-40 w-auto" />
 
-          {/* <Image
-            src={Gangadhar}
-            alt="Gangadhar Meher University Logo"
+          <Image
+            src={KFC}
+            alt="KFC Logo"
             className="h-40 w-auto"
           />
 
-          <Image
+          {/* <Image
             src={OUAC}
             alt="Odisha University of Agriculture & Technology Logo"
             className="h-40 w-auto filter brightness-0 invert"

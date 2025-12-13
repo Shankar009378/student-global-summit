@@ -11,6 +11,7 @@ export default function FormLayout() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({});
   const [eventType, setEventType] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Handle input change
   const updateField = (name, value) => {
@@ -20,6 +21,9 @@ export default function FormLayout() {
   // Submit Handler
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return; // Prevent double submit clicks
+    setIsSubmitting(true);
 
     if (!eventType) {
       alert("Please select an event before submitting.");
@@ -93,28 +97,24 @@ export default function FormLayout() {
       return;
     }
 
-    // Send to backend
-    const fd = new FormData();
-    fd.append("data", JSON.stringify(data));
+    setShowSuccess(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
-    const res = await fetch("/api/register", {
-      method: "POST",
-      body: fd,
-    });
+    try {
+      const fd = new FormData();
+      fd.append("data", JSON.stringify(data));
 
-    const response = await res.json();
-
-    if (response.success) {
-      // alert("You have successfully submitted the form!");
-      setShowSuccess(true);
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
-
-      setTimeout(() => setShowSuccess(false), 3000);
-
-      e.target.reset();
-    } else {
+      await fetch("/api/register", {
+        method: "POST",
+        body: fd,
+      });
+    } catch (error) {
+      console.error(error);
       alert("Something went wrong while submitting.");
+    } finally {
+      setTimeout(() => setShowSuccess(false), 3000);
+      setIsSubmitting(false);
+      e.target.reset();
     }
   };
 
@@ -157,7 +157,7 @@ export default function FormLayout() {
                 target="_blank"
                 className="flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-lg transition-all duration-300 shadow-md"
               >
-                <img src="/whatsapp-icon.png" className="w-6 h-6" />
+                <img src="../assets/images/whatsapp.png" className="w-6 h-6" />
                 Join WhatsApp Community
               </a>
 
@@ -167,7 +167,7 @@ export default function FormLayout() {
                 target="_blank"
                 className="flex items-center justify-center gap-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 rounded-lg transition-all duration-300 shadow-md"
               >
-                <img src="/instagram-icon.png" className="w-6 h-6" />
+                <img src="../assets/images/instagram.png" className="w-6 h-6" />
                 Follow on Instagram
               </a>
             </div>
@@ -599,9 +599,9 @@ export default function FormLayout() {
               </h2>
 
               <p className="text-pink-600 text-sm mt-2">
-                Submit a technical article based on the theme of the summit –
-                UUJCC (Utkal University Journal of Computing & Communications).
-                Follow the guidelines provided in the Call for Papers document.
+                Submit your proposed technical article – UUJCC (Utkal University
+                Journal of Computing & Communications). Follow the guidelines
+                provided in the Call for Papers document.
               </p>
 
               {/* DOWNLOAD BUTTON FOR CALL FOR PAPERS */}
@@ -774,13 +774,16 @@ export default function FormLayout() {
           </button>
           <button
             type="submit"
-            className="px-4 py-2 rounded-md text-white font-semibold cursor-pointer
-             bg-gradient-to-r from-pink-600 to-pink-700
-             hover:from-yellow-300 hover:to-yellow-400 hover:text-black
-             hover:shadow-[0_0_18px_rgba(255,230,0,0.6)]
-             transition-all duration-300"
+            disabled={isSubmitting}
+            className={`px-4 py-2 rounded-md text-white font-semibold
+    ${
+      isSubmitting
+        ? "opacity-50 cursor-not-allowed"
+        : "bg-gradient-to-r from-pink-600 to-pink-700 hover:from-yellow-300 hover:to-yellow-400 hover:text-black"
+    }
+  `}
           >
-            Submit
+            {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         </div>
       </form>

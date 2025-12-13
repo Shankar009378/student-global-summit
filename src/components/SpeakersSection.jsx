@@ -18,6 +18,7 @@ import SugyaniMohapatra from "@/assets/images/sugyani.jpg";
 import HimansuTripathy from "@/assets/images/himansu.jpeg";
 // import ParichayPattnaik from "@/assets/images/parichay.jpeg";
 import HariSaranDash from "@/assets/images/hari.jpeg";
+import AjitMohanty from "@/assets/images/ajit.jpeg";
 
 export default function SpeakersSection() {
   return (
@@ -165,6 +166,30 @@ export default function SpeakersSection() {
             </p>
 
             <p className="text-sm text-white mt-1 text-center">Bhubaneswar</p>
+          </div>
+
+          <div
+            className="flex flex-col items-center p-8 rounded-2xl 
+            bg-white/5 border border-white backdrop-blur-md
+            hover:bg-summit-pink/20 hover:border-summit-pink transition cursor-pointer hover:scale-[1.05] hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,0,128,0.25)]"
+          >
+            <Image
+              src={AjitMohanty}
+              alt="Mr. Ajit Mohanty"
+              width={128}
+              height={128}
+              className="w-32 h-32 rounded-full object-cover object-top ring-4 ring-gray-300"
+            />
+
+            <h1 className="mt-4 text-lg font-semibold text-yellow-300 text-center">
+              Mr. Ajit Mohanty
+            </h1>
+
+            <p className="mt-1 text-sm font-medium text-white text-center">
+              Head of Product Engineering
+            </p>
+
+            <p className="text-sm text-white mt-1 text-center">Tata Consultancy Services (TCS)</p>
           </div>
 
           <div

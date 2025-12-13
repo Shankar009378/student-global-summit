@@ -13,6 +13,9 @@ import { HyperText } from "@/components/ui/hyper-text";
 import Link from "next/link";
 import { ComicText } from "@/components/ui/comic-text";
 import confetti from "canvas-confetti";
+import { useEffect } from "react";
+import { ShineBorder } from "@/components/ui/shine-border";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 const navigation = [
   { name: "Theme", href: "#theme" },
@@ -24,6 +27,17 @@ const navigation = [
 
 export default function HeroSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Auto-open popup when page loads
+  useEffect(() => {
+    setShowPopup(true);
+
+    // Auto-close after 6 seconds
+    const timer = setTimeout(() => setShowPopup(false), 6000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const triggerSpeakerScroll = () => {
     // 1️⃣ Trigger Confetti
@@ -64,6 +78,84 @@ export default function HeroSection() {
 
   return (
     <div className="relative min-h-screen">
+      {/* AUTOMATIC LIMITED SLOT POPUP */}
+      {showPopup && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-md animate-fadeIn">
+          {/* SHINE BORDER WRAPPER */}
+          <div className="relative w-[90%] max-w-lg rounded-3xl overflow-hidden">
+            <BorderBeam
+              borderWidth={3}
+              duration={10}
+              shineColor={[
+                "rgba(45, 0, 90, 0.9)", // Deep purple
+                "rgba(20, 20, 60, 0.9)", // Midnight navy
+                "rgba(80, 0, 120, 0.8)", // Dark lavender
+                "rgba(0, 60, 120, 0.8)", // Deep electric blue
+              ]}
+            />
+
+            {/* POPUP CONTENT */}
+            <div
+              className="relative bg-black backdrop-blur-2xl 
+        border border-white/30 shadow-[0_0_40px_rgba(255,255,255,0.45)] 
+        rounded-3xl p-10 text-center"
+            >
+              {/* CLOSE BUTTON */}
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-3 right-3 text-white/80 hover:text-white text-2xl cursor-pointer"
+              >
+                ✕
+              </button>
+
+              <RainbowButton
+                className="text-pink-600 rounded-2xl mb-4"
+                variant="outline"
+              >
+                Exclusive Announcement{" "}
+              </RainbowButton>
+
+              <div className="flex justify-center items-center gap-2">
+                <TextAnimate
+                  animation="blurInUp"
+                  by="character"
+                  duration={1}
+                  className="text-center text-xl font-semibold text-red-600"
+                >
+                  LIMITED SLOTS OPEN
+                </TextAnimate>
+
+                {/* Blinking Siren Icon */}
+                <span className="text-2xl animate-pulse drop-shadow-[0_0_8px_rgba(255,0,0,0.8)]">
+                  🚨
+                </span>
+              </div>
+
+              {/* SUBTITLE */}
+              <p className="text-white/90 mt-4 text-lg font-semibold">
+                🏨 Only{" "}
+                <span className="text-yellow-300 font-extrabold">
+                  300 Premium Accommodation Passes
+                </span>{" "}
+                Available
+              </p>
+
+              {/* PREMIUM LINE */}
+              <p className="text-pink-600 mt-3 text-sm tracking-wider font-medium uppercase">
+                Priority Access • VIP Networking • Elite Student Delegation
+              </p>
+
+              {/* REGISTER BUTTON */}
+              <Link href="/register">
+                <InteractiveHoverButton className="mt-4 flex-none rounded-full bg-white p-2 px-6 text-sm font-semibold text-white shadow-xs inset-ring-white/20 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                  Register Now
+                </InteractiveHoverButton>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       <video
         autoPlay
         loop
@@ -121,6 +213,7 @@ export default function HeroSection() {
             </Link>
           </div>
         </nav>
+
         <Dialog
           open={mobileMenuOpen}
           onClose={setMobileMenuOpen}
