@@ -177,7 +177,7 @@ export default function RewardsSection() {
               {/* Close Button */}
               <button
                 onClick={() => setOpenModal(false)}
-                className="absolute top-3 right-3 text-white cursor-pointer text-2xl font-bold hover:text-red-400 transition-all duration-200 bg-white"
+                className="absolute top-3 right-3 text-white cursor-pointer text-2xl font-bold hover:text-red-400 transition-all duration-200"
               >
                 ✖
               </button>
