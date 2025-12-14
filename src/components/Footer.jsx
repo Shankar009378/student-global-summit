@@ -26,11 +26,11 @@ export default function Footer() {
           <a href="#" className="-m-1.5 p-1.5 items-center gap-2 flex">
             <Image
               src={Logo}
-              alt="Student Global Summit Logo"
+              alt="Students Global Summit Logo"
               className="h-10 w-auto"
             />
             <span className="text-white font-bold tracking-wider text-lg">
-              Student Global Summit
+              Students Global Summit
             </span>
           </a>
 
@@ -62,7 +62,7 @@ export default function Footer() {
         {/* Footer Bottom Row */}
         <div className="flex flex-col items-center sm:flex-row sm:justify-between">
           <p className="text-sm text-white">
-            © Student Global Summit 2025. All Rights Reserved.
+            © Students Global Summit 2025. All Rights Reserved.
           </p>
 
           <div className="flex items-center gap-4 mt-3 sm:mt-0">

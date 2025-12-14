@@ -15,7 +15,7 @@ export default function Banners() {
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <p className="text-sm text-white font-semibold">
           <strong className="font-bold text-yellow-300">
-            Student Global Summit 2025
+            Students Global Summit 2025
           </strong>
           <svg
             viewBox="0 0 2 2"

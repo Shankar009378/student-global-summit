@@ -178,11 +178,11 @@ export default function HeroSection() {
             <a href="#" className="-m-1.5 p-1.5 items-center gap-2 flex">
               <Image
                 src={Logo}
-                alt="Student Global Summit Logo"
+                alt="Students Global Summit Logo"
                 className="h-8 w-auto"
               />
               <span className="text-white font-bold tracking-wider">
-                Student Global Summit
+                Students Global Summit
               </span>
             </a>
           </div>
@@ -225,11 +225,11 @@ export default function HeroSection() {
               <a href="#" className="-m-1.5 p-1.5 items-center gap-2 flex">
                 <Image
                   src={Logo}
-                  alt="Student Global Summit Logo"
+                  alt="Students Global Summit Logo"
                   className="h-8 w-auto"
                 />
                 <span className="text-white font-bold tracking-wider">
-                  Student Global Summit
+                  Students Global Summit
                 </span>
               </a>
               <button
@@ -313,7 +313,7 @@ export default function HeroSection() {
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-balance text-white sm:text-7xl">
-              STUDENT <AuroraText>GLOBAL</AuroraText> SUMMIT 2025
+              STUDENTS <AuroraText>GLOBAL</AuroraText> SUMMIT 2025
             </h1>
             {/* <TextAnimate
               animation="slideUp"

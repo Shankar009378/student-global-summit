@@ -6,7 +6,7 @@ import { TextAnimate } from "@/components/ui/text-animate";
 
 const faqs = [
   {
-    q: "Who is eligible to attend the Student Global Summit 2025?",
+    q: "Who is eligible to attend the Students Global Summit 2025?",
     a: "Students, creators, and young professionals aged 16–30 who are passionate about technology, innovation, and building an ethical AI-driven future for India and beyond.",
   },
   {

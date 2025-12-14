@@ -84,7 +84,7 @@ export default function NewsletterSection() {
             </TextAnimate>
             <p className="mt-4 text-md lg:text-lg text-gray-300">
               Get key updates, speaker announcements, and exclusive
-              opportunities for the Student Global Summit 2025.
+              opportunities for the Students Global Summit 2025.
             </p>
             <form
               onSubmit={handleSubmit}

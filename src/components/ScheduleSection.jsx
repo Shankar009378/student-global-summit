@@ -33,17 +33,15 @@ export default function ScheduleSection() {
       },
       {
         time: "10:00 AM",
-        event:
-          "Address by Dr. Mukesh Mahaling, Hon'ble Cabinet Minister, Electronics & Information Technology, Government of Odisha",
+        event: "Address by the Guest of Honour",
       },
       {
         time: "10:10 AM",
-        event:
-          "Address by Shri Suryabanshi Suraj, Hon'ble Minister of Higher Education, Sports & Youth Services, Odia Language, Literature & Culture, Government of Odisha",
+        event: "Address by the Guest of Honour",
       },
       {
         time: "10:20 AM",
-        event: "Address by Chief Guest (To be finalized)",
+        event: "Address by Chief Guest",
       },
       {
         time: "10:45 AM",
@@ -59,83 +57,86 @@ export default function ScheduleSection() {
           "Keynote Session by Prof. Hee-Cheol Kim, College of AI Convergence/Institute of Digital Anti-aging Healthcare (IDA), Inje University, Republic of Korea - AI in Healthcare: Unlocking a New Era of Possibility with Ethical Responsibility",
       },
       {
-        time: "11:45 AM",
+        time: "11:50 AM",
         event:
-          "Keynote Session by Subini Kumar Rath, Head of Principal Enterprise Architects, Huawei, Dubai; AI in autonomous decision-making for enterprises",
+          "Keynote Session by Mr. Himansu Tripathy, Head of Engineering, Datavogue United Arab Emirates: Evolution of Generative and Agentic AI",
       },
       {
         time: "-- AM",
-        event:
-          "Lunch Break",
+        event: "LUNCH BREAK",
       },
       {
         time: "02:30 PM",
         event:
-          "Plenary session led by Mr. Parichay Pattnaik, Regional Head - Academic Alliances at TCS Bhubaneswar",
+          "Keynote Session by Mr. Harisaran Dash, AI/ML Expert, California, United States: Empowering Enterprise with Agentic AI",
       },
       {
         time: "03:30 PM",
         event:
-          "Expert talk by Dr. Satyajit Mahapatra, Professor, Department of Pharmacology, AIIMS, Guwahati",
+          "Expert talk by Dr. Satyajit Mahapatra, Professor, Department of Pharmacology, AIIMS, Guwahati: Ensuring Ethical Integrity in AI-Driven Biomedical Research and Healthcare Systems",
       },
       {
         time: "04:15 PM",
         event:
-          "Invited Talk by Dr. Debi Prosad Dogra, Head, Department of Computer Science and Engineering, IIT, Bhubaneswar",
+          "Invited Talk by Dr. Debi Prosad Dogra, Head, Department of CSE, IIT, Bhubaneswar: AI and Ethics: Applications in Education and Healthcare",
       },
       {
         time: "05:00 PM",
         event:
-          "Invited Talk by Prof. Subrata Kumar Panda, President, FTBI, NIT Rourkela",
+          "Invited Talk by Prof. Subrata Kumar Panda, President, FTBI, NIT Rourkela: AI Application in Startup Ecosystem – A Blessing or Curse",
       },
       {
         time: "-- PM",
-        event:
-          "Break",
+        event: "BREAK",
       },
       {
         time: "06:00 PM",
         event:
-          "Cultural Evening (Documentary on Odisha Culture, Varanasi Dance Group, Sugyeni Mohapatra)",
+          "Cultural Evening (Documentary on Odisha Culture, Varanasi Dance Group, Sugyeni Mohapatra, Rajasthani Folk Dance by Meena Sapera and group)",
       },
       {
         time: "08:00 PM",
-        event:
-          "Dinner",
+        event: "DINNER",
       },
     ],
     2: [
       {
-        time: "09:30 AM",
+        time: "09:00 AM",
         event: "Assembly & Welcome",
       },
       {
-        time: "10:00 AM",
-        event: "Keynote Session by Mr. Himansu Tripathy, Designs Data Solutions, Dubai, United Arab Emirates",
+        time: "09:30 AM",
+        event:
+          "Expert talk by Dr. Ramesh Kumar Mishra, Professor of Cognitive Science at the University of Hyderabad: Consciousness in AI - what it is and what it is not  ",
       },
       {
-        time: "10:45 AM",
-        event: "Keynote Session by Mr. Harisaran Dash, AI/ML Expert, California, United States",
+        time: "10:15 AM",
+        event:
+          "Mr. Ajit Mohanty, Head of Product Engineering, Tata Consultancy Services (TCS): The Age of Responsible Intelligence (Technology, AI, and Emerging Leaders)",
       },
       {
-        time: "11:30 AM",
-        event: "Plenary session led by Mr. Chandan Malu, Principal Technology Architect, Infosys",
+        time: "11:45 AM",
+        event:
+          "Plenary session led by Mr. Chandan Malu, Principal Technology Architect, Infosys: AI in Business, Industry, and the Future of Work",
       },
       {
         time: "-- AM",
-        event: "Lunch Break",
+        event: "LUNCH BREAK",
       },
       {
         time: "02:30 PM",
-        event: "Dr. Ramesh Kumar Mishra, Professor of cognitive science at the University of Hyderabad",
+        event:
+          "Expert talk by Mr. Rakesh Kumar Sahoo, Associate Director at Accenture: Unleashing the power of AI in Banking and Financial Industry",
       },
       {
-        time: "03:15 PM",
-        event: "Expert talk by Mr. Rakesh Sahoo, Application Development Team Lead at Accenture ",
+        time: "03:25 PM",
+        event:
+          "Keynote Session by Mr. Subini Kumar Rath, Head of Principal Enterprise Architects, Huawei, Dubai; Digital Trust in Telecom: Embedding Responsible AI Practices in Telecom Transformation",
       },
       {
-        time: "04:00 PM",
-        event: "Expert talk by Dr. Padmalochan Bera, IIT, Bhubaneswar",
+        time: "04:20 PM",
+        event:
+          "Ms. Purabee Purnasha Mishra, COO, STPI Bhubaneswar: India’s innovation narrative—from grassroots to global",
       },
       {
         time: "-- PM",
@@ -143,38 +144,42 @@ export default function ScheduleSection() {
       },
       {
         time: "-- PM",
-        event: "Break",
+        event: "BREAK",
       },
       {
-        time: "06:30 PM",
-        event: "Cultural Evening (Odishi Dance by Odisha Dance Academy, Sourav Bhardwaj/Krisna Beura)",
+        time: "06:00 PM",
+        event:
+          "Cultural Evening (Odishi Dance by Odisha Dance Academy, Bargad Dance Group, Drama by UU Students, Performance by Sourav Bhardwaj)",
       },
       {
         time: "08:00 PM",
-        event: "Dinner",
+        event: "DINNER",
       },
     ],
     3: [
       {
-        time: "09:30 AM",
+        time: "09:00 AM",
         event: "Assembly & Welcome",
       },
-      { time: "10:00 AM", event: "Workshop on AI in day-to-day life: Collaboration with Industry" },
       {
-        time: "12:00 PM",
-        event: "Voices of the Future",
+        time: "09:05 AM",
+        event: "Voices of the Future (Final Round)",
+      },
+      {
+        time: "10:00 AM",
+        event: "Plenary Session: Academic Leadership Dialogue on Ethical Governance of AI",
+      },
+      {
+        time: "11:30 AM",
+        event: "Plenary Session: Industry Leadership Dialogue on Ethical Governance of AI",
       },
       {
         time: "-- PM",
-        event: "Lunch Break",
+        event: "LUNCH BREAK",
       },
       {
-        time: "02:30 PM",
-        event: "Panel discussion by Vice Chancellors of different Universities",
-      },
-      {
-        time: "03:30 PM",
-        event: "Valedictory Session ",
+        time: "03:00 PM",
+        event: "Valedictory Session followed by performance of VSSUT and UU students",
       },
     ],
   };

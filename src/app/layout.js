@@ -16,11 +16,11 @@ export const metadata = {
   metadataBase: new URL("https://studentglobalsummit.com"),
 
   title: {
-    default: "Student Global Summit 2025 | India's Biggest Youth Leadership Summit",
-    template: "%s | Student Global Summit 2025",
+    default: "Students Global Summit 2025 | India's Biggest Youth Leadership Summit",
+    template: "%s | Students Global Summit 2025",
   },
 
-  description: "Join the Student Global Summit 2025 — A 3-day transformative event featuring startups, policy debates, innovation showcases, cultural events, and networking with leaders.",
+  description: "Join the Students Global Summit 2025 — A 3-day transformative event featuring startups, policy debates, innovation showcases, cultural events, and networking with leaders.",
 
   keywords: [
     "Student Global Summit",
@@ -52,22 +52,22 @@ export const metadata = {
     },
   },
 
-  authors: [{ name: "Student Global Summit Team" }],
-  creator: "Student Global Summit",
-  publisher: "Student Global Summit",
+  authors: [{ name: "Students Global Summit Team" }],
+  creator: "Students Global Summit",
+  publisher: "Students Global Summit",
 
   openGraph: {
-    title: "Student Global Summit 2025",
+    title: "Students Global Summit 2025",
     description:
       "A global summit empowering youth through innovation, leadership, and entrepreneurship.",
     url: "https://studentglobalsummit.com",
-    siteName: "Student Global Summit",
+    siteName: "Students Global Summit",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Student Global Summit 2025 Banner",
+        alt: "Students Global Summit 2025 Banner",
       },
     ],
     locale: "en_US",
@@ -75,7 +75,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Student Global Summit 2025",
+    title: "Students Global Summit 2025",
     description:
       "Empowering youth through innovation, entrepreneurship, global policy, and leadership.",
     site: "@sgsummit2025",
