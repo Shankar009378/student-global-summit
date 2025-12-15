@@ -14,7 +14,6 @@ import Link from "next/link";
 import { ComicText } from "@/components/ui/comic-text";
 import confetti from "canvas-confetti";
 import { useEffect } from "react";
-import { ShineBorder } from "@/components/ui/shine-border";
 import { BorderBeam } from "@/components/ui/border-beam";
 
 const navigation = [
@@ -34,7 +33,7 @@ export default function HeroSection() {
     setShowPopup(true);
 
     // Auto-close after 6 seconds
-    const timer = setTimeout(() => setShowPopup(false), 6000);
+    const timer = setTimeout(() => setShowPopup(false), 7000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -129,6 +128,20 @@ export default function HeroSection() {
                 <span className="text-2xl animate-pulse drop-shadow-[0_0_8px_rgba(255,0,0,0.8)]">
                   🚨
                 </span>
+              </div>
+
+              {/* YUVA SWADESHI CLOSED NOTICE */}
+              <div
+                className="mt-4 mx-auto max-w-md rounded-xl border border-red-500/40 
+                bg-red-900/20 px-4 py-3 text-center"
+              >
+                <p className="text-red-400 text-sm font-semibold tracking-wide">
+                  🔒 Yuva Swadeshi Navachar Pradarshini
+                </p>
+                <p className="text-white text-xs mt-1">
+                  Registration for Startup Exhibition is{" "}
+                  <span className="font-bold">CLOSED</span>
+                </p>
               </div>
 
               {/* SUBTITLE */}

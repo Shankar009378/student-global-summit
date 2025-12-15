@@ -13,6 +13,8 @@ export default function FormLayout() {
   const [eventType, setEventType] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const closedEvents = ["startup"];
+
   // Handle input change
   const updateField = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -151,16 +153,6 @@ export default function FormLayout() {
 
             {/* SOCIAL BUTTONS */}
             <div className="mt-6 flex flex-col gap-4">
-              {/* WHATSAPP COMMUNITY BUTTON */}
-              <a
-                href="https://whatsapp.com/channel/0029Vb6jMIq6buMDQ1E1nG1X"
-                target="_blank"
-                className="flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-lg transition-all duration-300 shadow-md"
-              >
-                <img src="../assets/images/whatsapp.png" className="w-6 h-6" />
-                Join WhatsApp Community
-              </a>
-
               {/* INSTAGRAM BUTTON */}
               <a
                 href="https://www.instagram.com/studentglobalsummit"
@@ -456,19 +448,39 @@ export default function FormLayout() {
             </p>
 
             <div className="mt-6 space-y-4">
-              <label className="flex items-center gap-3 text-white">
+              {/* STARTUP OPTION (CLOSED) */}
+              <label
+                className={`flex items-center gap-3 text-white p-3 rounded-md
+      ${
+        closedEvents.includes("startup")
+          ? "bg-red-500/20 cursor-not-allowed opacity-60"
+          : ""
+      }
+    `}
+              >
                 <input
                   type="radio"
                   name="eventType"
                   value="startup"
-                  onChange={() => setEventType("startup")}
+                  disabled={closedEvents.includes("startup")}
                   className="w-4 h-4"
                 />
-                <span className="text-sm font-medium">
-                  Yuva Swadeshi Navachar Pardarshini (Startup & Tech Exhibition)
-                </span>
+
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium">
+                    Yuva Swadeshi Navachar Pardarshini (Startup & Tech
+                    Exhibition)
+                  </span>
+
+                  {closedEvents.includes("startup") && (
+                    <span className="text-red-400 text-xs font-bold mt-1">
+                      🔒 Registration Closed
+                    </span>
+                  )}
+                </div>
               </label>
 
+              {/* POLICY OPTION */}
               <label className="flex items-center gap-3 text-white">
                 <input
                   type="radio"
@@ -482,6 +494,7 @@ export default function FormLayout() {
                 </span>
               </label>
 
+              {/* DELEGATE PASS */}
               <label className="flex items-center gap-3 text-white">
                 <input
                   type="radio"
