@@ -10,7 +10,7 @@ export default function RewardsSection() {
   const [openModal, setOpenModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  const closedEvents = ["startup", "policy"];
+  // const closedEvents = ["startup", "policy"];
 
   // Event Guidelines
   const guidelines = {
@@ -115,21 +115,14 @@ export default function RewardsSection() {
         <div className="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-2">
           {/* CARD 1 - STARTUP */}
           <div
-            onClick={() => {
-              if (!closedEvents.includes("startup")) handleOpenModal("startup");
-            }}
-            className={`relative group transform transition-all duration-500 
-    ${
-      closedEvents.includes("startup")
-        ? "cursor-not-allowed opacity-50"
-        : "cursor-pointer hover:scale-[1.03] hover:-translate-y-2 hover:rotate-[1deg]"
-    }`}
+            onClick={() => handleOpenModal("startup")}
+            className="cursor-pointer group transform transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 hover:rotate-[1deg]"
           >
-            {closedEvents.includes("startup") && (
+            {/* {closedEvents.includes("startup") && (
               <div className="absolute top-3 left-3 z-30 bg-red-600 px-3 py-1 rounded-md text-white text-xs font-bold shadow-md">
                 REGISTRATION IS TEMPORARILY CLOSED
               </div>
-            )}
+            )} */}
 
             <img
               src="https://images.unsplash.com/photo-1758426637769-a00c1edbbcf8?w=900&auto=format&fit=crop&q=60"
@@ -154,21 +147,14 @@ export default function RewardsSection() {
 
           {/* CARD 2 - POLICY */}
           <div
-            onClick={() => {
-              if (!closedEvents.includes("policy")) handleOpenModal("policy");
-            }}
-            className={`relative group transform transition-all duration-500 
-    ${
-      closedEvents.includes("policy")
-        ? "cursor-not-allowed opacity-50"
-        : "cursor-pointer hover:scale-[1.03] hover:-translate-y-2 hover:rotate-[-1deg]"
-    }`}
+            onClick={() => handleOpenModal("policy")}
+            className="cursor-pointer group transform transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 hover:rotate-[-1deg]"
           >
-            {closedEvents.includes("policy") && (
+            {/* {closedEvents.includes("policy") && (
               <div className="absolute top-3 left-3 z-30 bg-red-600 px-3 py-1 rounded-md text-white text-xs font-bold shadow-md">
                 REGISTRATION IS TEMPORARILY CLOSED
               </div>
-            )}
+            )} */}
 
             <img
               src="https://images.unsplash.com/photo-1691242716282-7e3ef5e93c68?w=900&auto=format&fit=crop&q=60"
@@ -193,82 +179,80 @@ export default function RewardsSection() {
         </div>
 
         {/* Modal */}
-        {openModal &&
-          selectedEvent &&
-          !closedEvents.includes(selectedEvent) && (
-            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex justify-center items-center p-4 sm:p-6">
-              {/* Responsive Modal Box */}
-              <div
-                className="bg-primary border border-white/30 rounded-xl w-full 
+        {openModal && selectedEvent && (
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex justify-center items-center p-4 sm:p-6">
+            {/* Responsive Modal Box */}
+            <div
+              className="bg-primary border border-white/30 rounded-xl w-full 
                     max-w-md sm:max-w-lg md:max-w-xl 
                     max-h-[90vh] overflow-y-auto 
                     p-6 sm:p-8 shadow-xl relative"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setOpenModal(false)}
+                className="absolute top-3 right-3 text-white cursor-pointer text-2xl font-bold hover:text-red-400 transition-all duration-200"
               >
-                {/* Close Button */}
-                <button
-                  onClick={() => setOpenModal(false)}
-                  className="absolute top-3 right-3 text-white cursor-pointer text-2xl font-bold hover:text-red-400 transition-all duration-200"
-                >
-                  ✖
-                </button>
+                ✖
+              </button>
 
-                {/* Title */}
-                <h2 className="text-xl sm:text-2xl font-bold text-yellow-300">
-                  {guidelines[selectedEvent].title}
-                </h2>
+              {/* Title */}
+              <h2 className="text-xl sm:text-2xl font-bold text-yellow-300">
+                {guidelines[selectedEvent].title}
+              </h2>
 
-                {/* Description */}
-                <p className="text-white mt-2 text-sm sm:text-base">
-                  {guidelines[selectedEvent].desc}
+              {/* Description */}
+              <p className="text-white mt-2 text-sm sm:text-base">
+                {guidelines[selectedEvent].desc}
+              </p>
+
+              {/* Main Guidelines */}
+              <ul className="mt-4 text-white space-y-2 text-sm sm:text-base leading-relaxed">
+                {guidelines[selectedEvent].points.map((pt, index) => (
+                  <li key={index}>• {pt}</li>
+                ))}
+              </ul>
+
+              {/* Why Participate Section */}
+              {guidelines[selectedEvent].highlight && (
+                <>
+                  <hr className="my-4 border-white/20" />
+
+                  <h3 className="text-lg font-semibold text-yellow-300">
+                    Why Participate
+                  </h3>
+
+                  <ul className="mt-2 text-white space-y-2 text-sm sm:text-base leading-relaxed">
+                    {guidelines[selectedEvent].highlight.map((pt, i) => (
+                      <li key={i}>• {pt}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {/* Footer */}
+              {guidelines[selectedEvent].footer && (
+                <p className="mt-4 text-pink-400 font-semibold text-sm sm:text-base">
+                  {guidelines[selectedEvent].footer}
                 </p>
+              )}
 
-                {/* Main Guidelines */}
-                <ul className="mt-4 text-white space-y-2 text-sm sm:text-base leading-relaxed">
-                  {guidelines[selectedEvent].points.map((pt, index) => (
-                    <li key={index}>• {pt}</li>
-                  ))}
-                </ul>
+              {/* Date */}
+              <p className="text-pink-500 font-bold mt-4 text-sm sm:text-base">
+                Event Date: {guidelines[selectedEvent].date}
+              </p>
 
-                {/* Why Participate Section */}
-                {guidelines[selectedEvent].highlight && (
-                  <>
-                    <hr className="my-4 border-white/20" />
-
-                    <h3 className="text-lg font-semibold text-yellow-300">
-                      Why Participate
-                    </h3>
-
-                    <ul className="mt-2 text-white space-y-2 text-sm sm:text-base leading-relaxed">
-                      {guidelines[selectedEvent].highlight.map((pt, i) => (
-                        <li key={i}>• {pt}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-
-                {/* Footer */}
-                {guidelines[selectedEvent].footer && (
-                  <p className="mt-4 text-pink-400 font-semibold text-sm sm:text-base">
-                    {guidelines[selectedEvent].footer}
-                  </p>
-                )}
-
-                {/* Date */}
-                <p className="text-pink-500 font-bold mt-4 text-sm sm:text-base">
-                  Event Date: {guidelines[selectedEvent].date}
-                </p>
-
-                {/* Register Button */}
-                <div className="mt-6 flex justify-center">
-                  <Link href={`/register`}>
-                    <InteractiveHoverButton className="px-6 py-3 text-sm font-semibold bg-white">
-                      Proceed to Registration
-                    </InteractiveHoverButton>
-                  </Link>
-                </div>
+              {/* Register Button */}
+              <div className="mt-6 flex justify-center">
+                <Link href={`/register`}>
+                  <InteractiveHoverButton className="px-6 py-3 text-sm font-semibold bg-white">
+                    Proceed to Registration
+                  </InteractiveHoverButton>
+                </Link>
               </div>
             </div>
-          )}
+          </div>
+        )}
 
         {/* Bottom Button */}
         <div className="mt-10 flex justify-center gap-5">

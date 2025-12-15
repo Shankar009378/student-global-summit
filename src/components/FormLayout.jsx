@@ -13,8 +13,6 @@ export default function FormLayout() {
   const [eventType, setEventType] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const closedEvents = ["startup"];
-
   // Handle input change
   const updateField = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -153,6 +151,7 @@ export default function FormLayout() {
 
             {/* SOCIAL BUTTONS */}
             <div className="mt-6 flex flex-col gap-4">
+
               {/* INSTAGRAM BUTTON */}
               <a
                 href="https://www.instagram.com/studentglobalsummit"
@@ -448,39 +447,19 @@ export default function FormLayout() {
             </p>
 
             <div className="mt-6 space-y-4">
-              {/* STARTUP OPTION (CLOSED) */}
-              <label
-                className={`flex items-center gap-3 text-white p-3 rounded-md
-      ${
-        closedEvents.includes("startup")
-          ? "bg-red-500/20 cursor-not-allowed opacity-60"
-          : ""
-      }
-    `}
-              >
+              <label className="flex items-center gap-3 text-white">
                 <input
                   type="radio"
                   name="eventType"
                   value="startup"
-                  disabled={closedEvents.includes("startup")}
+                  onChange={() => setEventType("startup")}
                   className="w-4 h-4"
                 />
-
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium">
-                    Yuva Swadeshi Navachar Pardarshini (Startup & Tech
-                    Exhibition)
-                  </span>
-
-                  {closedEvents.includes("startup") && (
-                    <span className="text-red-400 text-xs font-bold mt-1">
-                      🔒 Registration Closed
-                    </span>
-                  )}
-                </div>
+                <span className="text-sm font-medium">
+                  Yuva Swadeshi Navachar Pardarshini (Startup & Tech Exhibition)
+                </span>
               </label>
 
-              {/* POLICY OPTION */}
               <label className="flex items-center gap-3 text-white">
                 <input
                   type="radio"
@@ -494,7 +473,6 @@ export default function FormLayout() {
                 </span>
               </label>
 
-              {/* DELEGATE PASS */}
               <label className="flex items-center gap-3 text-white">
                 <input
                   type="radio"

@@ -52,12 +52,12 @@ export default function RegisterPage() {
         </div>
 
         {/* MAIN MESSAGE CARD */}
-        <div
+        {/* <div
           className="relative backdrop-blur-2xl bg-white/10 border border-white/20 
                      shadow-[0_0_50px_rgba(255,255,255,0.2)] 
                      rounded-3xl p-10 sm:p-14 text-center"
         >
-          {/* TITLE */}
+
           <TextAnimate
             animation="blurInUp"
             by="character"
@@ -68,7 +68,6 @@ export default function RegisterPage() {
             ⚠️ REGISTRATION TEMPORARILY PAUSED
           </TextAnimate>
 
-          {/* MESSAGE */}
           <p className="mt-6 text-white/90 text-sm sm:text-lg leading-relaxed max-w-2xl mx-auto">
             We are currently verifying and counting registrations.
             <br />
@@ -84,10 +83,10 @@ export default function RegisterPage() {
           <p className="mt-2 text-white/70 text-sm">
             Thank you for your patience.
           </p>
-        </div>
+        </div> */}
 
         {/* GLASS CONTAINER */}
-        {/* <div
+        <div
           className="relative backdrop-blur-2xl bg-white/10 border border-white 
             shadow-[0_0_40px_rgba(255,255,255,0.15)] 
             rounded-3xl p-10 sm:p-14 
@@ -97,7 +96,7 @@ export default function RegisterPage() {
           <div className="absolute inset-0 rounded-3xl pointer-events-none border border-white/10"></div>
 
           <FormLayout />
-        </div> */}
+        </div>
       </div>
     </section>
   );

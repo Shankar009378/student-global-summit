@@ -130,21 +130,6 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* TEMPORARY REGISTRATION PAUSE NOTICE */}
-              <div
-                className="mt-4 mx-auto max-w-md rounded-xl 
-             border border-blue-500/40 
-             bg-blue-900/20 px-4 py-3 text-center"
-              >
-                <p className="text-blue-300 text-sm font-semibold tracking-wide">
-                  ⏸ Registration Temporarily Paused
-                </p>
-                <p className="text-white text-xs mt-1 leading-relaxed">
-                  We are currently verifying and counting registrations. Please
-                  be patient — registrations will resume shortly.
-                </p>
-              </div>
-
               {/* SUBTITLE */}
               <p className="text-white/90 mt-4 text-lg font-semibold">
                 🏨 Only{" "}
