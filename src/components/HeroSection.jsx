@@ -130,17 +130,18 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* YUVA SWADESHI CLOSED NOTICE */}
+              {/* TEMPORARY REGISTRATION PAUSE NOTICE */}
               <div
-                className="mt-4 mx-auto max-w-md rounded-xl border border-red-500/40 
-                bg-red-900/20 px-4 py-3 text-center"
+                className="mt-4 mx-auto max-w-md rounded-xl 
+             border border-blue-500/40 
+             bg-blue-900/20 px-4 py-3 text-center"
               >
-                <p className="text-red-400 text-sm font-semibold tracking-wide">
-                  🔒 Yuva Swadeshi Navachar Pradarshini
+                <p className="text-blue-300 text-sm font-semibold tracking-wide">
+                  ⏸ Registration Temporarily Paused
                 </p>
-                <p className="text-white text-xs mt-1">
-                  Registration for Startup Exhibition is{" "}
-                  <span className="font-bold">CLOSED</span>
+                <p className="text-white text-xs mt-1 leading-relaxed">
+                  We are currently verifying and counting registrations. Please
+                  be patient — registrations will resume shortly.
                 </p>
               </div>
 
