@@ -7,7 +7,7 @@ import OUAC from "@/assets/images/ouac.png";
 import OSOU from "@/assets/images/osou.png";
 import Sambalpur from "@/assets/images/sambalpur.png";
 import Gangadhar from "@/assets/images/gangadhar.png";
-import EduMin from "@/assets/images/educ-min.svg";
+import EduMin from "@/assets/images/odishaedu.jpg";
 import Utkal from "@/assets/images/utkal.png";
 import Odisha from "@/assets/images/odisha.png";
 import TCS from "@/assets/images/tcs.png";
@@ -36,7 +36,7 @@ export default function LogoClouds() {
           <Image
             src={EduMin}
             alt="Ministry of Education Logo"
-            className="h-40 w-auto filter brightness-0 invert"
+            className="h-40 w-auto bg-black"
           />
 
           <Image
