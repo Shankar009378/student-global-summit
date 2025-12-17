@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import CountryList from "country-list-with-dial-code-and-flag";
 import { getNames } from "country-list";
+import Image from "next/image";
 
 const countries = getNames();
 const dialCodes = CountryList.getAll();
@@ -97,22 +98,24 @@ export default function FormLayout() {
       return;
     }
 
-    setShowSuccess(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
     try {
       const fd = new FormData();
       fd.append("data", JSON.stringify(data));
 
-      await fetch("/api/register", {
+      const res = await fetch("/api/register", {
         method: "POST",
         body: fd,
       });
+
+      if (!res.ok) {
+        throw new Error("Submission failed");
+      }
+
+      // ✅ SHOW SUCCESS ONLY AFTER API SUCCESS
+      setShowSuccess(true);
     } catch (error) {
-      console.error(error);
-      alert("Something went wrong while submitting.");
+      alert("Something went wrong. Please try again.");
     } finally {
-      setTimeout(() => setShowSuccess(false), 3000);
       setIsSubmitting(false);
       e.target.reset();
     }
@@ -151,17 +154,32 @@ export default function FormLayout() {
 
             {/* SOCIAL BUTTONS */}
             <div className="mt-6 flex flex-col gap-4">
-
               {/* INSTAGRAM BUTTON */}
               <a
                 href="https://www.instagram.com/studentglobalsummit"
                 target="_blank"
                 className="flex items-center justify-center gap-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 rounded-lg transition-all duration-300 shadow-md"
               >
-                <img src="../assets/images/instagram.png" className="w-6 h-6" />
+                <Image
+                  src="/images/instagram.png"
+                  alt="Instagram"
+                  width={24}
+                  height={24}
+                />
                 Follow on Instagram
               </a>
             </div>
+          </div>
+        </div>
+      )}
+
+      {isSubmitting && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm">
+          <div className="flex flex-col items-center gap-4">
+            <div className="h-10 w-10 animate-spin rounded-full border-4 border-pink-500 border-t-transparent"></div>
+            <p className="text-white font-semibold text-sm">
+              Submitting your registration…
+            </p>
           </div>
         </div>
       )}
@@ -766,10 +784,10 @@ export default function FormLayout() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`px-4 py-2 rounded-md text-white font-semibold
+            className={`px-6 py-2 rounded-md text-white font-semibold transition-all duration-300
     ${
       isSubmitting
-        ? "opacity-50 cursor-not-allowed"
+        ? "bg-gray-500 cursor-not-allowed"
         : "bg-gradient-to-r from-pink-600 to-pink-700 hover:from-yellow-300 hover:to-yellow-400 hover:text-black"
     }
   `}
