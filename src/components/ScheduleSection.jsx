@@ -27,28 +27,32 @@ export default function ScheduleSection() {
           "Address by Prof. Jagneshwar Dandapat, Vice Chancellor, Utkal University",
       },
       {
-        time: "09:50 AM",
+        time: "09:45 AM",
         event:
           "Address by Prof. Dipak Kumar Sahoo, Vice Chancellor, VSSUT, Burla",
       },
       {
-        time: "10:00 AM",
-        event: "Address by the Guest of Honour",
+        time: "09:50 AM",
+        event:
+          "Address by Shri Bhupendra Singh Poonia, IAS, Commissioner-cum-Secretary, Skill Development & Technical Education Department, Government of Odisha",
       },
       {
         time: "10:10 AM",
-        event: "Address by the Guest of Honour",
+        event:
+          "Address by Shri Vishal Kumar Dev, IAS, Principal Secretary, Electronics & Information Technology Department, Government of Odisha",
       },
       {
         time: "10:20 AM",
-        event: "Address by Chief Guest",
+        event:
+          "Address by Shri Suryabanshi Suraj, Hon'ble Minister of Higher Education, Sports & Youth Services, Odia Language, Literature & Culture, Government of Odisha",
       },
       {
-        time: "10:45 AM",
-        event: "Vote of Thanks by Organizing Secretary",
+        time: "10:30 AM",
+        event:
+          "Address by Dr. Mukesh Mahaling, Hon'ble Cabinet Minister, Electronics & Information Technology, Government of Odisha",
       },
       {
-        time: "10:45 AM",
+        time: "10:40 AM",
         event: "Vote of Thanks by Organizing Secretary",
       },
       {
@@ -68,7 +72,7 @@ export default function ScheduleSection() {
       {
         time: "02:30 PM",
         event:
-          "Keynote Session by Mr. Harisaran Dash, AI/ML Expert, California, United States: Empowering Enterprise with Agentic AI",
+          "Expert Session by Mr. Biswa Ranjan Nayak, Founder & CEO, 33crores.acom: AI in Spirituality, Culture and Heritage",
       },
       {
         time: "03:30 PM",
@@ -131,16 +135,12 @@ export default function ScheduleSection() {
       {
         time: "03:25 PM",
         event:
-          "Keynote Session by Mr. Subini Kumar Rath, Head of Principal Enterprise Architects, Huawei, Dubai; Digital Trust in Telecom: Embedding Responsible AI Practices in Telecom Transformation",
+          "Keynote Session by Mr. Santosh Kumar Choudhury, Senior Director – Software Development, Oracle, Hyderabad",
       },
       {
         time: "04:20 PM",
         event:
-          "Ms. Purabee Purnasha Mishra, COO, STPI Bhubaneswar: India’s innovation narrative—from grassroots to global",
-      },
-      {
-        time: "-- PM",
-        event: "Plenary session by Industry Experts",
+          "Keynote Session by Mr. Subini Kumar Rath, Head of Principal Enterprise Architects, Huawei, Dubai; Digital Trust in Telecom: Embedding Responsible AI Practices in Telecom Transformation",
       },
       {
         time: "-- PM",
@@ -167,11 +167,13 @@ export default function ScheduleSection() {
       },
       {
         time: "10:00 AM",
-        event: "Plenary Session: Academic Leadership Dialogue on Ethical Governance of AI",
+        event:
+          "Plenary Session: Academic Leadership Dialogue on Ethical Governance of AI",
       },
       {
         time: "11:30 AM",
-        event: "Plenary Session: Industry Leadership Dialogue on Ethical Governance of AI",
+        event:
+          "Plenary Session: Industry Leadership Dialogue on Ethical Governance of AI",
       },
       {
         time: "-- PM",
@@ -179,7 +181,29 @@ export default function ScheduleSection() {
       },
       {
         time: "03:00 PM",
-        event: "Valedictory Session followed by performance of VSSUT and UU students",
+        event: "Opening Rituals",
+      },
+      {
+        time: "03:05 PM",
+        event: "Address by Organizing Secretary",
+      },
+      {
+        time: "03:15 PM",
+        event:
+          "Address by Prof. Dipak Kumar Sahoo, Vice Chancellor, VSSUT, Burla",
+      },
+      {
+        time: "03:20 PM",
+        event:
+          "Address by Shri Aravind Agrawal, IAS, Commissioner-cum-Secretary, Higher Education Department, Government of Odisha",
+      },
+      {
+        time: "-- PM",
+        event: "Winner announcement and prize distribution",
+      },
+      {
+        time: "03:35 PM",
+        event: "Vote of Thanks by Organizing Secretary",
       },
     ],
   };
@@ -187,102 +211,109 @@ export default function ScheduleSection() {
   return (
     <section
       id="schedule"
-      className="bg-black text-white py-16 px-6 relative overflow-hidden"
+      className="relative bg-black text-white py-16 sm:py-20 px-4 sm:px-6 overflow-hidden"
     >
-      {/* Decorative gradient glows */}
-      <div className="absolute inset-0 bg-gradient-to-b from-pink-600/20 via-black to-black"></div>
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-yellow-300/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-600/10 rounded-full blur-3xl"></div>
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 bg-gradient-to-b from-pink-600/20 via-black to-black" />
 
       <div className="relative max-w-6xl mx-auto">
+        {/* HEADING */}
         <TextAnimate
           animation="blurInUp"
           by="character"
-          duration={0.9}
-          className="text-3xl font-extrabold text-center text-yellow-300 drop-shadow-lg"
+          duration={0.8}
+          className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center text-yellow-300"
         >
           THE SUMMIT SCHEDULE
         </TextAnimate>
 
-        <p className="max-w-2xl mx-auto mt-4 text-center text-white font-semibold">
-          Three transformative days of innovation, culture, leadership, and
-          unstoppable energy.
+        <p className="mt-4 text-center text-white/90 text-sm sm:text-base max-w-xl mx-auto">
+          Three transformative days of innovation, leadership & culture.
         </p>
 
-        {/* TAB BUTTONS */}
-        <div className="grid grid-cols-1 gap-8 mt-10 lg:grid-cols-3">
-          {/* DAY 1 TAB */}
-          <div
-            onClick={() => setActiveDay(1)}
-            className={`group p-4 border rounded-xl cursor-pointer transition-all duration-300
-              ${
-                activeDay === 1
-                  ? "bg-yellow-300 text-black border-yellow-400 shadow-[0_0_25px_rgba(255,230,0,0.7)]"
-                  : "bg-white/5 border-white/20 hover:bg-white/10"
-              }`}
-          >
-            <div className="flex justify-between items-center">
-              <h2
-                className={`text-xl font-bold ${
-                  activeDay === 1 ? "text-black" : "text-yellow-300"
+        {/* DAY TABS */}
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[1, 2, 3].map((day) => (
+            <button
+              key={day}
+              onClick={() => setActiveDay(day)}
+              className={`w-full rounded-xl px-4 py-3 transition-all duration-300 cursor-pointer
+                ${
+                  activeDay === day
+                    ? "bg-yellow-300 text-black font-bold shadow-lg"
+                    : "bg-white/5 text-white border border-white/20 hover:bg-white/10"
                 }`}
-              >
-                Day 1
-              </h2>
-              <h2 className="text-xl font-bold">18 Dec 2025</h2>
-            </div>
-          </div>
-
-          {/* DAY 2 TAB */}
-          <div
-            onClick={() => setActiveDay(2)}
-            className={`group p-4 border rounded-xl cursor-pointer transition-all duration-300
-              ${
-                activeDay === 2
-                  ? "bg-pink-600 text-white border-pink-500 shadow-[0_0_25px_rgba(255,0,100,0.7)]"
-                  : "bg-white/5 border-white/20 hover:bg-white/10"
-              }`}
-          >
-            <div className="flex justify-between items-center">
-              <h2 className="text-xl font-bold">Day 2</h2>
-              <h2 className="text-xl font-bold">19 Dec 2025</h2>
-            </div>
-          </div>
-
-          {/* DAY 3 TAB */}
-          <div
-            onClick={() => setActiveDay(3)}
-            className={`group p-4 border rounded-xl cursor-pointer transition-all duration-300
-              ${
-                activeDay === 3
-                  ? "bg-yellow-300 text-black border-yellow-400 shadow-[0_0_25px_rgba(255,230,0,0.7)]"
-                  : "bg-white/5 border-white/20 hover:bg-white/10"
-              }`}
-          >
-            <div className="flex justify-between items-center">
-              <h2 className="text-xl font-bold">Day 3</h2>
-              <h2 className="text-xl font-bold">20 Dec 2025</h2>
-            </div>
-          </div>
-        </div>
-
-        {/* TAB CONTENT */}
-        <div className="p-8 mt-12 space-y-6 bg-white/5 border border-white/20 rounded-xl backdrop-blur">
-          {scheduleData[activeDay].map((item, i) => (
-            <div
-              key={i}
-              className="flex justify-between items-start text-gray-300"
             >
-              <p className="text-lg w-3/4 text-left">{item.event}</p>
-              <p className="text-sm font-semibold text-yellow-300">
-                {item.time}
-              </p>
-            </div>
+              <div className="flex justify-between sm:flex-col sm:items-center sm:gap-1">
+                <span>Day {day}</span>
+                <span className="text-xs sm:text-sm opacity-80">
+                  {day === 1 ? "18 Dec" : day === 2 ? "19 Dec" : "20 Dec"} 2025
+                </span>
+              </div>
+            </button>
           ))}
         </div>
 
-        {/* Register Button */}
-        <div className="flex justify-center mt-10">
+        {/* SCHEDULE LIST */}
+        <div className="mt-12 bg-white/5 border border-white/20 rounded-2xl p-4 sm:p-8 backdrop-blur">
+          <div className="space-y-5">
+            {scheduleData[activeDay].map((item, i) => {
+              const isBreak =
+                item.event.includes("BREAK") || item.event.includes("DINNER");
+
+              return (
+                <div
+                  key={i}
+                  className={`rounded-xl p-4 transition
+                    ${
+                      isBreak
+                        ? "bg-yellow-300/10 border border-yellow-300/30"
+                        : "bg-black/30 hover:bg-black/40"
+                    }`}
+                >
+                  {/* MOBILE LAYOUT */}
+                  <div className="sm:hidden">
+                    <p className="text-xs font-bold text-pink-400 mb-1">
+                      {item.time}
+                    </p>
+                    <p
+                      className={`text-sm font-medium ${
+                        isBreak ? "text-yellow-300" : "text-white"
+                      }`}
+                    >
+                      {item.event}
+                    </p>
+                  </div>
+
+                  {/* DESKTOP LAYOUT */}
+                  <div className="hidden sm:flex items-start gap-6">
+                    <div className="min-w-[90px] text-right">
+                      <p className="text-sm font-bold text-pink-400">
+                        {item.time}
+                      </p>
+                    </div>
+
+                    <div className="relative">
+                      <span className="block w-3 h-3 rounded-full bg-yellow-300 mt-1" />
+                      <span className="absolute top-5 left-[5px] h-full w-[1px] bg-white/20" />
+                    </div>
+
+                    <p
+                      className={`text-sm sm:text-base font-medium leading-relaxed ${
+                        isBreak ? "text-yellow-300" : "text-white"
+                      }`}
+                    >
+                      {item.event}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="flex justify-center mt-12">
           <Link href="/register">
             <InteractiveHoverButton className="px-6 py-3 text-sm font-semibold bg-white">
               Register Now
