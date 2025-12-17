@@ -19,6 +19,7 @@ import Dominos from "@/assets/images/dominos.png";
 import Wow from "@/assets/images/wow.jpg";
 import ZingBer from "@/assets/images/zingber.png";
 import SambalpuriHub from "@/assets/images/sambalpurihub.png";
+import Dahibara from "@/assets/images/dahibara.jpeg";
 
 export default function LogoClouds() {
   return (
@@ -117,23 +118,24 @@ export default function LogoClouds() {
             className="h-40 w-auto"
           />
 
-          <Image
-            src={Wow}
-            alt="Wow Momo Logo"
-            className="h-40 w-auto"
-          />
+          <Image src={Wow} alt="Wow Momo Logo" className="h-40 w-auto" />
 
-          <Image
-            src={ZingBer}
-            alt="ZingBer Logo"
-            className="h-40 w-auto"
-          />
+          <Image src={ZingBer} alt="ZingBer Logo" className="h-40 w-auto" />
         </div>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-10">
         <div className="mx-auto mt-10 grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 md:grid-cols-3 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
-          <Image src={SambalpuriHub} alt="Sambalpuri Hub Logo" className="h-40 w-auto" />
+          <Image
+            src={Dahibara}
+            alt="Dahibara Express Logo"
+            className="h-40 w-auto"
+          />
+          <Image
+            src={SambalpuriHub}
+            alt="Sambalpuri Hub Logo"
+            className="h-40 w-auto"
+          />
         </div>
       </div>
     </div>
