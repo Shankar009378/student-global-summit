@@ -20,6 +20,7 @@ import Wow from "@/assets/images/wow.jpg";
 import ZingBer from "@/assets/images/zingber.png";
 import SambalpuriHub from "@/assets/images/sambalpurihub.png";
 import Dahibara from "@/assets/images/dahibara.jpeg";
+import Jalmitra from "@/assets/images/jalmitra.jpeg";
 
 export default function LogoClouds() {
   return (
@@ -129,6 +130,12 @@ export default function LogoClouds() {
           <Image
             src={Dahibara}
             alt="Dahibara Express Logo"
+            className="h-40 w-auto"
+          />
+
+          <Image
+            src={Jalmitra}
+            alt="Jalmitra Logo"
             className="h-40 w-auto"
           />
           <Image
