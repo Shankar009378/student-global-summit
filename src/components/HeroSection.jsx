@@ -33,7 +33,7 @@ export default function HeroSection() {
     setShowPopup(true);
 
     // Auto-close after 6 seconds
-    const timer = setTimeout(() => setShowPopup(false), 7000);
+    const timer = setTimeout(() => setShowPopup(false), 8000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -78,6 +78,77 @@ export default function HeroSection() {
   return (
     <div className="relative min-h-screen">
       {/* AUTOMATIC LIMITED SLOT POPUP */}
+      {/* {showPopup && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-md animate-fadeIn">
+          <div className="relative w-[90%] max-w-lg rounded-3xl overflow-hidden">
+            <BorderBeam
+              borderWidth={3}
+              duration={10}
+              shineColor={[
+                "rgba(45, 0, 90, 0.9)", // Deep purple
+                "rgba(20, 20, 60, 0.9)", // Midnight navy
+                "rgba(80, 0, 120, 0.8)", // Dark lavender
+                "rgba(0, 60, 120, 0.8)", // Deep electric blue
+              ]}
+            />
+
+            <div
+              className="relative bg-black backdrop-blur-2xl 
+        border border-white/30 shadow-[0_0_40px_rgba(255,255,255,0.45)] 
+        rounded-3xl p-10 text-center"
+            >
+
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-3 right-3 text-white/80 hover:text-white text-2xl cursor-pointer"
+              >
+                ✕
+              </button>
+
+              <RainbowButton
+                className="text-pink-600 rounded-2xl mb-4"
+                variant="outline"
+              >
+                Exclusive Announcement{" "}
+              </RainbowButton>
+
+              <div className="flex justify-center items-center gap-2">
+                <TextAnimate
+                  animation="blurInUp"
+                  by="character"
+                  duration={1}
+                  className="text-center text-xl font-semibold text-red-600"
+                >
+                  LIMITED SLOTS OPEN
+                </TextAnimate>
+
+                <span className="text-2xl animate-pulse drop-shadow-[0_0_8px_rgba(255,0,0,0.8)]">
+                  🚨
+                </span>
+              </div>
+
+              <p className="text-white/90 mt-4 text-lg font-semibold">
+                🏨 Only{" "}
+                <span className="text-yellow-300 font-extrabold">
+                  300 Premium Accommodation Passes
+                </span>{" "}
+                Available
+              </p>
+
+              <p className="text-pink-600 mt-3 text-sm tracking-wider font-medium uppercase">
+                Priority Access • VIP Networking • Elite Student Delegation
+              </p>
+
+              <Link href="/register">
+                <InteractiveHoverButton className="mt-4 flex-none rounded-full bg-white p-2 px-6 text-sm font-semibold text-white shadow-xs inset-ring-white/20 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                  Register Now
+                </InteractiveHoverButton>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )} */}
+
       {showPopup && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-md animate-fadeIn">
           {/* SHINE BORDER WRAPPER */}
@@ -111,45 +182,48 @@ export default function HeroSection() {
                 className="text-pink-600 rounded-2xl mb-4"
                 variant="outline"
               >
-                Exclusive Announcement{" "}
+                Official Announcement
               </RainbowButton>
 
-              <div className="flex justify-center items-center gap-2">
-                <TextAnimate
-                  animation="blurInUp"
-                  by="character"
-                  duration={1}
-                  className="text-center text-xl font-semibold text-red-600"
-                >
-                  LIMITED SLOTS OPEN
-                </TextAnimate>
+              {/* MAIN TITLE */}
+              <TextAnimate
+                animation="blurInUp"
+                by="character"
+                duration={1}
+                className="text-center text-xl sm:text-2xl font-bold text-red-500"
+              >
+                ⚠️ REGISTRATION CLOSED
+              </TextAnimate>
 
-                {/* Blinking Siren Icon */}
-                <span className="text-2xl animate-pulse drop-shadow-[0_0_8px_rgba(255,0,0,0.8)]">
-                  🚨
-                </span>
-              </div>
-
-              {/* SUBTITLE */}
-              <p className="text-white/90 mt-4 text-lg font-semibold">
-                🏨 Only{" "}
-                <span className="text-yellow-300 font-extrabold">
-                  300 Premium Accommodation Passes
+              {/* MESSAGE */}
+              <p className="text-white/90 mt-4 text-base sm:text-lg font-semibold leading-relaxed">
+                Registrations for{" "}
+                <span className="text-yellow-300 font-bold">
+                  Students Global Summit 2025
                 </span>{" "}
-                Available
+                have officially concluded.
+              </p>
+
+              <p className="text-white/70 mt-3 text-sm leading-relaxed">
+                We received an overwhelming response from students across the
+                globe.
+                <br />
+                Thank you for your interest and enthusiasm.
               </p>
 
               {/* PREMIUM LINE */}
-              <p className="text-pink-600 mt-3 text-sm tracking-wider font-medium uppercase">
-                Priority Access • VIP Networking • Elite Student Delegation
+              <p className="text-pink-600 mt-5 text-xs tracking-wider font-medium uppercase">
+                Shortlisting • Verification • Final Preparations in Progress
               </p>
 
-              {/* REGISTER BUTTON */}
-              <Link href="/register">
-                <InteractiveHoverButton className="mt-4 flex-none rounded-full bg-white p-2 px-6 text-sm font-semibold text-white shadow-xs inset-ring-white/20 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-                  Register Now
-                </InteractiveHoverButton>
-              </Link>
+              {/* DISABLED CTA */}
+              <div
+                className="mt-6 inline-block px-6 py-2 rounded-full 
+                        bg-white/10 border border-white/30 
+                        text-white/60 text-sm font-semibold cursor-not-allowed"
+              >
+                Registration Closed
+              </div>
             </div>
           </div>
         </div>
@@ -180,7 +254,7 @@ export default function HeroSection() {
                 alt="Students Global Summit Logo"
                 className="h-8 w-auto"
               />
-              <span className="text-white font-bold tracking-wider">
+              <span className="text-black font-bold tracking-wider">
                 Students Global Summit
               </span>
             </a>

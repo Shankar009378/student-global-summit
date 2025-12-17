@@ -10,7 +10,7 @@ export default function RewardsSection() {
   const [openModal, setOpenModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  // const closedEvents = ["startup", "policy"];
+  const closedEvents = ["startup", "policy"];
 
   // Event Guidelines
   const guidelines = {
@@ -115,14 +115,21 @@ export default function RewardsSection() {
         <div className="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-2">
           {/* CARD 1 - STARTUP */}
           <div
-            onClick={() => handleOpenModal("startup")}
-            className="cursor-pointer group transform transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 hover:rotate-[1deg]"
+            onClick={() => {
+              if (!closedEvents.includes("startup")) handleOpenModal("startup");
+            }}
+            className={`relative group transform transition-all duration-500 
+    ${
+      closedEvents.includes("startup")
+        ? "cursor-not-allowed opacity-50"
+        : "cursor-pointer hover:scale-[1.03] hover:-translate-y-2 hover:rotate-[-1deg]"
+    }`}
           >
-            {/* {closedEvents.includes("startup") && (
+            {closedEvents.includes("startup") && (
               <div className="absolute top-3 left-3 z-30 bg-red-600 px-3 py-1 rounded-md text-white text-xs font-bold shadow-md">
-                REGISTRATION IS TEMPORARILY CLOSED
+                REGISTRATION CLOSED
               </div>
-            )} */}
+            )}
 
             <img
               src="https://images.unsplash.com/photo-1758426637769-a00c1edbbcf8?w=900&auto=format&fit=crop&q=60"
@@ -147,14 +154,21 @@ export default function RewardsSection() {
 
           {/* CARD 2 - POLICY */}
           <div
-            onClick={() => handleOpenModal("policy")}
-            className="cursor-pointer group transform transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 hover:rotate-[-1deg]"
+            onClick={() => {
+              if (!closedEvents.includes("policy")) handleOpenModal("policy");
+            }}
+            className={`relative group transform transition-all duration-500 
+    ${
+      closedEvents.includes("policy")
+        ? "cursor-not-allowed opacity-50"
+        : "cursor-pointer hover:scale-[1.03] hover:-translate-y-2 hover:rotate-[-1deg]"
+    }`}
           >
-            {/* {closedEvents.includes("policy") && (
+            {closedEvents.includes("policy") && (
               <div className="absolute top-3 left-3 z-30 bg-red-600 px-3 py-1 rounded-md text-white text-xs font-bold shadow-md">
-                REGISTRATION IS TEMPORARILY CLOSED
+                REGISTRATION CLOSED
               </div>
-            )} */}
+            )}
 
             <img
               src="https://images.unsplash.com/photo-1691242716282-7e3ef5e93c68?w=900&auto=format&fit=crop&q=60"

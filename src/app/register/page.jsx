@@ -54,33 +54,36 @@ export default function RegisterPage() {
         {/* MAIN MESSAGE CARD */}
         <div
           className="relative backdrop-blur-2xl bg-white/10 border border-white/20 
-                     shadow-[0_0_50px_rgba(255,255,255,0.2)] 
-                     rounded-3xl p-10 sm:p-14 text-center"
+             shadow-[0_0_50px_rgba(255,255,255,0.2)] 
+             rounded-3xl p-10 sm:p-14 text-center"
         >
           <TextAnimate
             animation="blurInUp"
             by="character"
             duration={0.8}
-            className="text-xl sm:text-4xl font-extrabold text-yellow-300 
-                       drop-shadow-lg tracking-wide"
+            className="text-lg sm:text-4xl font-extrabold text-yellow-300 
+               drop-shadow-lg tracking-wide"
           >
-            ⚠️ REGISTRATION TEMPORARILY PAUSED
+            ⚠️ REGISTRATION CLOSED
           </TextAnimate>
 
           <p className="mt-6 text-white/90 text-sm sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            We are currently verifying and counting registrations.
+            Registration for{" "}
+            <span className="font-semibold text-yellow-300">
+              Global Summit 2025
+            </span>{" "}
+            has officially concluded.
             <br />
-            <span className="font-semibold">
-              No new submissions are being accepted at this moment.
-            </span>
+            All available slots have now been filled.
           </p>
 
-          <p className="mt-4 text-blue-300 text-sm sm:text-base font-semibold">
-            ⏳ Registrations will reopen shortly.
+          <p className="mt-4 text-pink-400 text-sm sm:text-base font-semibold">
+            🎉 Thank you for the overwhelming response!
           </p>
 
-          <p className="mt-2 text-white/70 text-sm">
-            Thank you for your patience.
+          <p className="mt-3 text-white/70 text-sm">
+            We look forward to welcoming all registered participants at the
+            summit.
           </p>
         </div>
 
